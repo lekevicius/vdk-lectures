@@ -7,7 +7,7 @@ html, body {
 
 p {
 	font-size: 1.6em;
-	line-height: 1.4;
+	line-height: 1.5;
 }
 
 a {
@@ -36,6 +36,10 @@ header .lecture-title {
 	color: #a450dc;
 	font-weight: 900;
 	font-family: "freight-display-pro", serif;
+}
+
+header .lecture-title a {
+	border: 0;
 }
 
 header .lectures {
@@ -110,6 +114,23 @@ header .lectures li a.unavailable {
 
 #content h2 {
 	margin: 2.4em 0 1.2em 0;
+}
+
+pre {
+	font-family: "mplus-1m", monospace;
+	font-size: 1.6em;
+	line-height: 1.4;
+}
+
+pre code {
+	background: #fafafa;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+#content p {
+	margin: 0.6em 0;
 }
 
 footer {
