@@ -112,8 +112,34 @@ header .lectures li a.unavailable {
 	margin-bottom: 0.3em;
 }
 
+img.float-left {
+	float: left;
+	margin: 0 1em 1em 0;
+}
+
+img.float-right {
+	float: right;
+	margin: 0 0 1em 1em;
+}
+
+#content img {
+/* 	width: 100%; */
+	max-width: 100%;
+}
+
 #content h2 {
 	margin: 2.4em 0 1.2em 0;
+}
+
+#content ul {
+	margin: 0.4em 0 0.4em 1.3em;
+	font-size: 1.6em;
+	list-style: circle;
+	line-height: 1.5;
+}
+
+#content li {
+	margin: 0.8em 0;
 }
 
 pre {
@@ -130,7 +156,7 @@ pre code {
 }
 
 #content p {
-	margin: 0.6em 0;
+	margin: 1em 0;
 }
 
 footer {

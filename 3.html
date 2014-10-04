@@ -70,32 +70,107 @@
 			<section class="notes">
 				<h2>Pagrindinė informacija</h2>
 				
-				<pre><code class="html">&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Kas&lt;/th&gt;
-      &lt;th&gt;Vnt.&lt;/th&gt;
-      &lt;th&gt;Kaina&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Me&scaron;kiukas&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;12 Lt&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Megztukas&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;18 Lt&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</code></pre>
+				<p>HTML vaidmuo puslapyje yra dvejopas: pirma ir svarbiausia, HTML’as aprašo puslapio turinį (tekstą) ir jo struktūrą; antra, HTML nurodo visus kitus puslapiui reikalingus resursus (CSS, JS, paveikslėlius ir t.t.). Struktūra aprašoma galvojant apie elementų prasmę, o ne tai, kaip jie atrodo, nes kaip jie atrodo galima pakeisti naudojant CSS. HTML’as yra Markup Language, ne programavimo kalba, panaši į Markdown, ir nepanaši į Wordą. Kas Worde yra paslėpta, HTML’e yra matoma.</p>
+				
+				<p>Keli patarimai, kaip rašyti HTML:</p>
+				
+				<ul>
+					<li>Rašyk maksimaliai tvarkingai. Atitrauk gilesnius elementus nuo krašto, visur palik arba nepalik tarpų kaip pavyzdyje. Kreipk dėmesį į taip, kaip redagavimo programa nuspalvina tekstą. Tvarkingas rašymas yra lengviausias būdas išvengti klaidų. Jei dar neturi užtikrintumo kaip bėgti, eik palengva.</li>
+				</ul>
+				
+				<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- Tekstas esantis tarp toki&#371; &#382;ymen&#371; yra nematomas lankytojams
+    ir vadinimas komentaru. A&scaron; juose pakomentuosiu kod&#261;. --&gt;
+    
+    &lt;title&gt;Puslapio pavadinimas&lt;/title&gt;
+    &lt;!-- Title yra puslapio pavadinimas, matomas ant tabo nar&scaron;ykl&#279;je --&gt;
+    
+    &lt;meta charset=&quot;utf8&quot;&gt;
+    &lt;!-- &Scaron;ios &#382;ym&#279;s reikia, kad puslapis teisingai atvaizduot&#371; 
+    lietuvi&scaron;kas raides --&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Puslapio pavadinimas&lt;/h1&gt;
+    &lt;!-- h1, h2, h3, h4, h5 ir h6 yra skirtingo lygio antra&scaron;t&#279;s --&gt;
+    
+    &lt;p&gt;
+      Lorem ipsum dolor sit amet, 
+      &lt;strong&gt;consectetur adipisicing elit,&lt;/strong&gt; 
+      &lt;em&gt;sed do eiusmod tempor incididunt&lt;/em&gt; 
+      &lt;strong&gt;&lt;em&gt;ut labore et dolore magna aliqua.&lt;/em&gt;&lt;/strong&gt; 
+      &lt;a href=&quot;http://vdk.lekevicius.com&quot;&gt;Ut enim ad minim veniam,&lt;/a&gt; 
+      quis nostrud exercitation ullamco laboris&lt;br&gt;
+      nisi ut aliquip ex ea commodo consequat.
+    &lt;/p&gt;
+    &lt;!--
+      p yra paragrafas, skirtas teksto blokams.
+      Juos gali b&#363;ti vidini&#371; &#382;ymi&#371;:
+      strong paboldina,
+      em pakreipia,
+      o a yra nuoroda, vedanti &#303; tai, kas para&scaron;yta href.
+      Visus tagus galima jungti ir naudoti kartu.
+      Eilut&#281; galima perkelti su &lt;br&gt;
+    --&gt;
+    
+    &lt;img 
+    src=&quot;http://ima.gs/400x200.png&quot; 
+    width=&quot;400&quot; height=&quot;200&quot; 
+    alt=&quot;Mielas katukas&quot;&gt;
+    &lt;!-- paveiksliukas pakraunamas i&scaron; nurodyto adreso, 
+    su nurodytu plo&#269;iu, auk&scaron;&#269;iu ir apra&scaron;ymu --&gt;
+    
+    &lt;ul&gt;
+      &lt;li&gt;Vienas&lt;/li&gt;
+      &lt;li&gt;Du&lt;/li&gt;
+      &lt;li&gt;Trys&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;!-- UL yra unorderer list; 
+    taip pat yra OL, kuris yra su numeriukais. 
+    LI yra list item - punktas s&#261;ra&scaron;o viduje. --&gt;
+    
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Kas&lt;/th&gt;
+          &lt;th&gt;Vnt.&lt;/th&gt;
+          &lt;th&gt;Kaina&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Me&scaron;kiukas&lt;/td&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;12 Lt&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Megztukas&lt;/td&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;18 Lt&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;!-- Lentel&#279;s strukt&#363;ra: sud&#279;tinga, ir naudinga tik tuomet, 
+    kai norite tur&#279;ti informacijos lentel&#281;. 
+    Jokiu b&#363;d&#371; nekurkite dizaino 
+    naudodami lenteles i&scaron;d&#279;stymui. --&gt;
+    
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
 			</section>
 			
 			<section class="links">
 				<h2>Toliau domėkitės</h2>
+				<ul>
+					<li><a href="https://atom.io">Atom - Mac ir Windows nemokama tekstinių failų redagavimo programa</a></li>
+					<li><a href="http://notepad-plus-plus.org">Notepad++ - Windows nemokama tekstinių failų redagavimo programa</a></li>
+					<li><a href="http://panic.com/coda/">Coda - Mac mokama tekstinių failų redagavimo programa</a></li>
+					<li><a href="http://www.sublimetext.com">Sublime Text - Mac ir Windows mokama tekstinių failų redagavimo programa</a></li>
+					<li><a href="https://developer.mozilla.org/en-US/">MDN - HTML, CSS ir JS dokumentacija internete</a></li>
+				</ul>
 			</section>
 
 		</section> <!-- #content -->
