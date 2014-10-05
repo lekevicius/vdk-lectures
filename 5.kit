@@ -1,0 +1,68 @@
+<!-- @import "_includes/header.html" -->
+
+			<p class="pretitle">V paskaita</p>
+			<h1>CSS išdėstymo būdai</h1>
+			
+			<p class="lecture-intro">CSS išdėstymas yra vienas sudėtingiausiai perkandamų niuansų kuriant tinklapių dizainus. Nors jų rankinis kūrimas yra komplikuotas, egzistuoja jau sukurti sprendimai, kuriuos lengva perprasti ir kurie leidžia lengviau sukurti išdėstymus, kurie adaptuojasi prie skirtingų ekrano dydžių.</p>
+			
+			<p class="download-link"><a href="/get/5.zip">Parsisiųsti paskaitos darbinį kodą</a></p>
+			
+			<section class="slides">
+				<h2>Prezentacija</h2>
+				<!-- SpeakerDeck -->
+				<script async class="speakerdeck-embed" data-id="75fd99c02c9b013279dd1ea472fb96ba" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+			</section>
+			
+			<section class="notes">
+				<h2>Pagrindinė informacija</h2>
+				
+				<p>CSS išdėstymams kurti yra keletas skirtingų būdų, tačiau šiuo metu lanksčiausias ir populiariausias yra naudojant <code>float</code> savybę. Float priverčia elementą ištrūkti iš įprastos tvarkos ir lygiuotis į tam tikrą šoną. Tai galima išnaudoti net labai sudėtingų išdėstymų sukūrimui. Tokiems išdėstymams reikia panašaus kodo:</p>
+				
+				<pre><code class="css">header {
+  /* Viršaus bloko stilius */
+}
+
+#main {
+  /* Apačios bloko stilius */
+}
+
+#main .left-sidebar {
+  width: 200px;
+  float: left;
+}
+
+#main .right-sidebar {
+  width: 200px;
+  float: right;
+}
+
+#content {
+  margin: 0 200px 0 200px; /* top left bottom right */
+}
+
+/* #main elementas turi turėti clearfix klasę */
+.clearfix:before, .clearfix:after {
+  content: ' ';
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+footer {
+  /* Apačios bloko stilius */
+}</code></pre>
+				
+				<p>Kitas, labiau rekomenduojamas būdas sukurti išdėstymus yra naudojant kitų sukurtas sistemas. Jų populiariausia yra Bootstrap. Pačio Boostrap puslapyje yra labai daug instrukcijų ir pavyzdžių kaip sukurti išdėstymus, kurie tinkamai persirikiuotų prie skirtingų ekrano dydžių.</p>
+	
+			</section>
+			
+			<section class="links">
+				<h2>Toliau domėkitės</h2>
+				<ul>
+					<li><a href="http://getbootstrap.com">Boostrap</a></li>
+					<li><a href="http://getbootstrap.com/css/#grid">Bootstrap išdėstymo tinklelio dokumentacija su pavyzdžiais</a></li>
+				</ul>
+			</section>
+
+<!-- @import "_includes/footer.html" -->

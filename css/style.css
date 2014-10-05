@@ -14,6 +14,12 @@ a {
 	color: #a450dc;
 	text-decoration: none;
 	border-bottom: 1px solid rgba(144,64,176,0.34);
+	transition: all 0.3s;
+}
+
+a:hover {
+	color: #53187b;
+	border-bottom: 1px solid #53187b;
 }
 
 #page {
@@ -92,13 +98,30 @@ header .lectures li a.unavailable {
 #content h1 {
 	font-size: 2.6em;
 	color: #a34fdb;
-		font-weight: 900;
+	font-weight: 900;
 	font-family: "freight-display-pro", serif;
 	margin: 0.3em 0 0.5em 0;
 }
 
 #content .lecture-intro {
 		
+}
+
+#content .download-link a {
+	border: 0;
+	border-radius: 5px;
+	background: #a450dc;
+	color: #fff;
+	padding: 0.6em 1em;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	display: inline-block;
+	margin: 0.4em 0 0 0;
+	transition: all 0.5s;
+}
+
+#content .download-link a:hover {
+	background: #53187b;
 }
 
 #content .pretitle, #content h2 {
@@ -153,6 +176,15 @@ pre code {
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
+}
+
+p code {
+	font-family: "mplus-1m", monospace;
+	background: #fafafa;
+	border: 1px solid #eee;
+	padding: 3px 6px;
+	border-radius: 5px;
+	color: #a450dc;
 }
 
 #content p {

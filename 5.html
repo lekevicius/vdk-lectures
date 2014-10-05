@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Tinklapių dizainas</title>
+	
+	<meta charset="utf-8">
+	<meta name="author" content="Jonas Lekevičius">
+	
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/color-brewer.css">
+	
+	<script src="//use.typekit.net/ksj2nbs.js"></script>
+	<script>try{Typekit.load();}catch(e){}</script>
+	
+</head>
+
+<body>
+	<div id="page">
+		<header>
+			<p class="lecture-title"><a href="/">Tinklapių dizainas</a></h1>
+			<p class="subtitle">Jonas Lekevičius, Vilniaus dizaino kolegija, 2014</p>
+			
+			<ul class="lectures clearfix">
+			
+				<li class="new-month">
+					<div class="month">Rugsėjis</div>
+					<a href="1.html">17</a>
+				</li>
+				<li><a href="2.html">24</a></li>
+				
+				<li class="new-month">
+					<div class="month">Spalis</div>
+					<a href="3.html">1</a>
+				</li>
+				<li><a href="4.html" class="unavailable">8</a></li>
+				<li><a href="5.html" class="unavailable">15</a></li>
+				<li><a href="6.html" class="unavailable">22</a></li>
+				<li><a href="7.html" class="unavailable">29</a></li>
+				
+				<li class="new-month">
+					<div class="month">Lapkritis</div>
+					<a href="8.html" class="unavailable">5</a>
+				</li>
+				<li><a href="9.html" class="unavailable">12</a></li>
+				<li><a href="10.html" class="unavailable">19</a></li>
+				<li><a href="11.html" class="unavailable">26</a></li>
+				
+				<li class="new-month">
+					<div class="month">Gruodis</div>
+					<a href="12.html" class="unavailable">3</a>
+				</li>
+				
+			</ul>
+		</header>
+		
+		<section id="content">
+			<p class="pretitle">V paskaita</p>
+			<h1>CSS išdėstymo būdai</h1>
+			
+			<p class="lecture-intro">CSS išdėstymas yra vienas sudėtingiausiai perkandamų niuansų kuriant tinklapių dizainus. Nors jų rankinis kūrimas yra komplikuotas, egzistuoja jau sukurti sprendimai, kuriuos lengva perprasti ir kurie leidžia lengviau sukurti išdėstymus, kurie adaptuojasi prie skirtingų ekrano dydžių.</p>
+			
+			<p class="download-link"><a href="/get/5.zip">Parsisiųsti paskaitos darbinį kodą</a></p>
+			
+			<section class="slides">
+				<h2>Prezentacija</h2>
+				<!-- SpeakerDeck -->
+				<script async class="speakerdeck-embed" data-id="75fd99c02c9b013279dd1ea472fb96ba" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+			</section>
+			
+			<section class="notes">
+				<h2>Pagrindinė informacija</h2>
+				
+				<p>CSS išdėstymams kurti yra keletas skirtingų būdų, tačiau šiuo metu lanksčiausias ir populiariausias yra naudojant <code>float</code> savybę. Float priverčia elementą ištrūkti iš įprastos tvarkos ir lygiuotis į tam tikrą šoną. Tai galima išnaudoti net labai sudėtingų išdėstymų sukūrimui. Tokiems išdėstymams reikia panašaus kodo:</p>
+				
+				<pre><code class="css">header {
+  /* Viršaus bloko stilius */
+}
+
+#main {
+  /* Apačios bloko stilius */
+}
+
+#main .left-sidebar {
+  width: 200px;
+  float: left;
+}
+
+#main .right-sidebar {
+  width: 200px;
+  float: right;
+}
+
+#content {
+  margin: 0 200px 0 200px; /* top left bottom right */
+}
+
+/* #main elementas turi turėti clearfix klasę */
+.clearfix:before, .clearfix:after {
+  content: ' ';
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+footer {
+  /* Apačios bloko stilius */
+}</code></pre>
+				
+				<p>Kitas, labiau rekomenduojamas būdas sukurti išdėstymus yra naudojant kitų sukurtas sistemas. Jų populiariausia yra Bootstrap. Pačio Boostrap puslapyje yra labai daug instrukcijų ir pavyzdžių kaip sukurti išdėstymus, kurie tinkamai persirikiuotų prie skirtingų ekrano dydžių.</p>
+	
+			</section>
+			
+			<section class="links">
+				<h2>Toliau domėkitės</h2>
+				<ul>
+					<li><a href="http://getbootstrap.com">Boostrap</a></li>
+					<li><a href="http://getbootstrap.com/css/#grid">Bootstrap išdėstymo tinklelio dokumentacija su pavyzdžiais</a></li>
+				</ul>
+			</section>
+
+		</section> <!-- #content -->
+		
+		<footer>
+			<p>
+				Kyla klausimų?
+				<a href="mailto:jonas@lekevicius.com">jonas@lekevicius.com</a>
+			</p>
+		</footer>
+	</div>
+	<script src="js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Tinklapių dizainas</title>
+	
+	<meta charset="utf-8">
+	<meta name="author" content="Jonas Lekevičius">
+	
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/color-brewer.css">
+	
+	<script src="//use.typekit.net/ksj2nbs.js"></script>
+	<script>try{Typekit.load();}catch(e){}</script>
+	
+</head>
+
+<body>
+	<div id="page">
+		<header>
+			<p class="lecture-title"><a href="/">Tinklapių dizainas</a></h1>
+			<p class="subtitle">Jonas Lekevičius, Vilniaus dizaino kolegija, 2014</p>
+			
+			<ul class="lectures clearfix">
+			
+				<li class="new-month">
+					<div class="month">Rugsėjis</div>
+					<a href="1.html">17</a>
+				</li>
+				<li><a href="2.html">24</a></li>
+				
+				<li class="new-month">
+					<div class="month">Spalis</div>
+					<a href="3.html">1</a>
+				</li>
+				<li><a href="4.html" class="unavailable">8</a></li>
+				<li><a href="5.html" class="unavailable">15</a></li>
+				<li><a href="6.html" class="unavailable">22</a></li>
+				<li><a href="7.html" class="unavailable">29</a></li>
+				
+				<li class="new-month">
+					<div class="month">Lapkritis</div>
+					<a href="8.html" class="unavailable">5</a>
+				</li>
+				<li><a href="9.html" class="unavailable">12</a></li>
+				<li><a href="10.html" class="unavailable">19</a></li>
+				<li><a href="11.html" class="unavailable">26</a></li>
+				
+				<li class="new-month">
+					<div class="month">Gruodis</div>
+					<a href="12.html" class="unavailable">3</a>
+				</li>
+				
+			</ul>
+		</header>
+		
+		<section id="content">
+			<p class="pretitle">VI paskaita</p>
+			<h1>CSS šriftai, animacijos ir kitos galimybės</h1>
+			
+			<p class="lecture-intro">Paskutinė paskaita apie CSS skirta mažesnėms ir naujesnėms CSS savybėms: galimybei naudoti bet kokį šriftą, perėjimams ir animacijoms. Šios paskaitos tikslas kartu yra ir įtvirtinti CSS žinias, gebėjimą susigaudyti kode ir ištaisyti klaidas.</p>
+			
+			<p class="download-link"><a href="/get/5.zip">Parsisiųsti paskaitos darbinį kodą</a></p>
+			
+			<section class="slides">
+				<h2>Prezentacija</h2>
+				<!-- SpeakerDeck -->
+				<script async class="speakerdeck-embed" data-id="75fd99c02c9b013279dd1ea472fb96ba" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+			</section>
+			
+			<section class="notes">
+				<h2>Pagrindinė informacija</h2>
+				
+				<p>CSS šriftų naudojimo kodas skiriasi priklausomai nuo to, kokį servisą naudojate. Kiekvienas jų turi savo instrukcijas, kurios dažniausiai labai paprastos, ir reikia pridėti eilutę arba dvi į HTML &lt;head&gt; elementą. Tuomet galima naudoti šriftą paprastai, pavyzdžiui:</p>
+
+				<pre><code class="css">p {
+  font-family: &#39;lato&#39;, sans-serif;
+}</code></pre>
+				
+				<p>CSS perėjimai yra paprasčiausias būdas pridėti dinamikos į puslapį. Juos labai paprasta aprašyti:</p>
+				
+				<pre><code class="css">a {
+  color: #ff9900;
+  transition: all 0.3s;
+}
+
+a:hover {
+  color: #ff0000;
+}</code></pre>
+				
+				<p>Keli esminiai patarimai apie HTML ir CSS klaidų taisymą:</p>
+				
+				<ul>
+					<li>Įsitikinkite, kad redaguojate tą failą, kurį norite. Kartais galite reduoti kokį nors Untitled vietoje tikro failo.</li>
+					<li>Rašykite tiek HTML, tiek CSS kodą tvarkingai ir kruopščiai. Kartais net vienas praleistas simbolis ar nepadėtas tarpas gali sugriauti puslapį, todėl neskubėkite.</li>
+					<li>Web Inspector (tas, su kuriuo žaidėme pirmą paskaitą, ir kuris yra pasiekiamas per right-click &quot;Inspect Element&quot;) yra geras įrankis paanalizuoti ne tik kitų, bet ir savo kodą, surasti klaidas.</li>
+				</ul>
+			</section>
+			
+			<section class="links">
+				<h2>Toliau domėkitės</h2>
+				<ul>
+					<li>Nemokami CSS šriftai: <a href="https://www.google.com/fonts">Google Web Fonts</a> ir <a href="https://edgewebfonts.adobe.com">Adobe Edge Web Fonts</a></li>
+					<li><a href="http://www.fontsquirrel.com/tools/webfont-generator">FontSquirrel CSS šriftų generatorius</a></li>
+					<li>Mokami CSS šriftų servisai: <a href="https://typekit.com">Typekit</a>, <a href="http://www.fonts.com/web-fonts">Fonts.com</a>, <a href="http://www.fontspring.com">FontSpring</a>, <a href="http://www.myfonts.com/licensing/webfont/">MyFonts</a></li>
+				</ul>
+			</section>
+
+		</section> <!-- #content -->
+		
+		<footer>
+			<p>
+				Kyla klausimų?
+				<a href="mailto:jonas@lekevicius.com">jonas@lekevicius.com</a>
+			</p>
+		</footer>
+	</div>
+	<script src="js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
