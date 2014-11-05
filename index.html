@@ -1,76 +1,895 @@
 <!DOCTYPE html>
+<!--
+  Visų pirma, šis tekstas, esantis tarp "kampinis skliaustas, šauktukas, du brūkšniukai" ir "du brūkšniukai, uždarytas kampinis skliaustas", vadinimas komentaru. Komentarai yra nematomi paprastiems lankytojams, ir matomi tik tuomet, kai kažkas žiūri puslapio kodą (kaip tu dabar žiūri). Jie yra labai naudingi paaiškinti sau ar kitiems, ką daro tam tikras kodas.
+
+  Pati pirma puslapio eilutė skirta informuoti naršykles, kad puslapis yra parašytas HTML'u.
+-->
 <html>
+  <!--
+    Pirmas ir aukščiausias HTML hierarchijos elementas yra <html> žymė.
+    Ji "atidaro ir uždaro" puslapį. Jei paslinktum kodą iki pačios pabaigos, rastum </html> - HTML žymės pabaigą (atkreipk dėmesį į / prieš html - jis žymi, kad tai yra pabaiga, ne pradžia).
 
-<head>
+    Kodą kuris yra tarp <grybas> ir </grybas> vadiname "esančiu grybas viduje".
+    Yra išimčių, bet beveik visi HTML žymenys turi pradžią ir pabaigą. Pabaiga yra būtina - ją praleidus, kodas gali neveikti.
+  -->
+  <head>
+    <!--
+      HEAD žymėje gyvena visi "nematomi" dalykai: puslapio pavadinimas, nuorodos į kitus reikalingus failus ir taip toliau.
+    -->
 
-	<title>Tinklapių dizainas</title>
-	
-	<meta charset="utf-8">
-	<meta name="author" content="Jonas Lekevičius">
-	
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/color-brewer.css">
-	
-	<script src="//use.typekit.net/ksj2nbs.js"></script>
-	<script>try{Typekit.load();}catch(e){}</script>
-	
-</head>
+    <title>Tinklapių dizainas - Jono Lekevičiaus paskaita Vilniaus Dizaino Kolegijoje</title>
+    <!-- TITLE turinys yra tai, kas matoma ant tabo naršyklėje. -->
 
-<body>
-	<div id="page">
-		<header>
-			<p class="lecture-title"><a href="/">Tinklapių dizainas</a></h1>
-			<p class="subtitle">Jonas Lekevičius, Vilniaus dizaino kolegija, 2014</p>
-			
-			<ul class="lectures clearfix">
-			
-				<li class="new-month">
-					<div class="month">Rugsėjis</div>
-					<a href="1.html">17</a>
-				</li>
-				<li><a href="2.html">24</a></li>
-				
-				<li class="new-month">
-					<div class="month">Spalis</div>
-					<a href="3.html">1</a>
-				</li>
-				<li><a href="4.html">8</a></li>
-				<li><a href="5.html">15</a></li>
-				<li><a href="6.html">22</a></li>
-				<li><a href="7.html">29</a></li>
-				
-				<li class="new-month">
-					<div class="month">Lapkritis</div>
-					<a href="8.html" class="unavailable">5</a>
-				</li>
-				<li><a href="9.html" class="unavailable">12</a></li>
-				<li><a href="10.html" class="unavailable">19</a></li>
-				<li><a href="11.html" class="unavailable">26</a></li>
-				
-				<li class="new-month">
-					<div class="month">Gruodis</div>
-					<a href="12.html" class="unavailable">3</a>
-				</li>
-				
-			</ul>
-		</header>
-		
-		<section id="content">
-			<p>Sveikas, interneto žmogau!</p>
-			<p>Ši interneto svetainė skirta mano žavingiesiems studentams. Jei tu esi žavingas mano studentas, labas! Naršyk į sveikatą (:</p>
-			<p>Jei tu nesi mano studentas, tuomet belieka tikėtis, kad esi ne mažiau žavingas. Gali pasivaikščioti, ir jei iš to bus naudos, beliks tik džiaugtis.</p>
+    <meta charset="utf-8">
+    <!--
+      Ši eilutė užtikrina, kad lietuviškos raidės nepavirs į klaustukus.
 
-		</section> <!-- #content -->
-		
-		<footer>
-			<p>
-				Kyla klausimų?
-				<a href="mailto:jonas@lekevicius.com">jonas@lekevicius.com</a>
-			</p>
-		</footer>
-	</div>
-	<script src="js/highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-</body>
+      Atkreipkite, kad META žymė yra viena iš išimčių, ji neturi "uždarymo", t.y. toks dalykas kaip </meta> neegzistuoja.
+      Tokios žymės "tiesiog yra". Nieko negalima įrašyti "į jų vidų", nes tas vidus neegzistuoja (palygink su TITLE žyme aukščiau).
+      Žymės, kurios neturi uždarymo yra META, LINK ir IMG. Šiame puslapyje yra visos trys.
+    -->
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--
+      Ši eilutė neprivaloma, bet reikalinga, jei savo dizainą pritaikėte prie mobiliųjų telefonų ir kitų mažesnių ekranų. 
+      Jei nepritaikėte, tuomet ši eilutė gali tik sugriauti dizainą!
+
+      Atkreipkite dėmesį į atributus.
+      Atributais vadinami šitie dalykai:
+
+      <žymė atributas="atributo reikšmė"></žymė>
+
+      Viena žymė gali turėti daug atributų. Aukščiau esanti žymė turi du: NAME ir CONTENT.
+    -->
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!--
+      Šios eilutės pakrauna puslapiui reikalingus CSS failus.
+
+      Adresas į CSS failą yra nuordytas reliatyviai. 
+      T.y, šis failas, kurį žiūrite, vadinasi "index.html". 
+      Šalia jo yra folderis, kuris vadinasi "css". 
+      Tame folderyje yra trys failai: "bootstrap.css", "style.css" ir "magnific-popup.css". 
+      Jų adresus norodome taip, kaip reikšmės parašytos HREF atribute: "css/style.css" ir panašiai.
+
+      Boostrap.css yra visa Boostrap dizaino sistema, kuri pristatyta puslapyje.
+      Style.css yra mano parašytas šio puslapio CSS failas su daug komentarų.
+      Magnific-popup.css yra CSS failas, kuris reikalingas demonstruojamam jQuery pluginui. Dažnas jQuery pluginas turi tiek JavaScript (JS), tiek CSS failą.
+    -->
+
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/jquery.magnific-popup.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/script.js"></script>
+    <!-- 
+      Šios keturios eilutės pakrauna puslapiui reikalingus JavaScript failus. 
+      Jų sintaksė skiriasi nuo CSS failų pakrovimo, bent veikimas yra panašus.
+
+      Pirmas failas pakrauna jQuery sistemą. Ji turi būti pakrauta pirma, nes kiti du JavaScript failai remiasi pirmojo funkcionalumu.
+      Antras failas yra demonstruojamas jQuery pluginas.
+      Trečias failas yra Boostrap dalis. Kelios to funkcijos (tooltips, carousel) irgi demostruojamos šiame puslapyje.
+      Galiausiai, ketvirtas failas yra mano parašytas. Jame yra JavaScript ir jQuery demonstracijų kodas su komentarais.
+    -->
+
+    <script src="http://use.typekit.net/ksj2nbs.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+    <!--
+      Paskutinės eilutės HEAD žymėje yra skirtos pakrauti specialius šriftus.
+      Aš naudoju Typekit šriftus, kurie yra mokami. Kelios nemokamos alternatyvos yra aptartos puslapyje.
+
+      Svarbu suprasti, kad aš pats nesugalvojau šių dviejų eilučių.
+      Jas man davė Typekit sistema ir pasakė, kur įstatyti. 
+      Google Web Fonts ir Adobe Edge Web Fonts turi savo instrukcijas - reikia tiesiog jas įvykdyti ir nieko nekeisti.
+    -->
+  </head>
+  <!-- Štai ir pasibaigia HEAD. Prasidėjo su <head>, baigėsi su </head>, o viskas, kas yra tarp šių žymenų yra laikoma "HEAD viduje". -->
+
+  <body>
+    <!--
+      Prasideda BODY. 
+      Jei HEAD buvo visokie nematomi elementai, tai BODY yra visi matomi. 
+      Visas tekstas, paveikslėliai, blokeliai gyvena BODY viduje.
+    -->
+    
+    <div id="header">
+      <div class="container">
+        <!--
+          CLASS yra labai dažnas atributas, nurodantis elemento CSS klasę.
+          Tai yra pagrindinis būdas, kaip HTML ir CSS / JavaScript susijungia:
+          CSS aprašo, kaip atrodo elementai turintys tam tikras klases, o HTML priskiria tas klases konkretiems elementams.
+          Štai ši DIV žymė turi "container" klasę, vadinasi, jai galios CSS taisykės, parašytos taip:
+
+          .container {
+            ...
+          }
+
+          Šiuo atveju, "container" klasė yra Boostrap dalis. Ji yra Boostrap Grid sistemos dalis:
+          http://getbootstrap.com/css/#grid
+
+          Vienas elementas gali turėti kelias klases atskirtas tarpais, taip:
+          <div class="container home-page featured"> ... </div>
+
+          ID yra retesnis atributas. Jis naudingas tiek dirbant su CSS, tiek su JavaScript.
+          Tik vienas HTML elementas gali turėti tam tikrą ID. T.y., daugiau šiame puslapyje negali būti dalykų, kurie turėtų id="header".
+          Elementą, kuris turi tam tikrą ID, CSS faile galima aprašyti taip:
+
+          #header {
+            ...
+          }
+
+          Susipažinimui su skirtingais būdais "pasirinkti" aprašomus HTML elementus siūlau pažaisti žaidimą CSS Diner:
+          http://flukeout.github.io
+          
+          Galiausiai, kokį vaidmenį atlieka skirtingi HTML žymenys (įskaitant DIV) aprašiau sekcijoje "Esminiai HTML žymenys".
+        -->
+
+        <header>
+          <div class="header-top">
+            <h1><a href="#">Tinklapių dizainas</a></h1>
+            <p class="tagline">Jonas Lekevičius, Vilniaus dizaino kolegija, 2014</p>
+          </div>
+          <ul class="navigation">
+            <li><a href="#section-html">HTML</a></li>
+            <li><a href="#section-css">CSS</a></li>
+            <li><a href="#section-bootstrap">Bootstrap</a></li>
+            <li><a href="#section-js">JavaScript</a></li>
+            <li><a href="#section-misc">Kitka</a></li>
+          </ul>
+        </header>
+        <!--
+          Pirmas didesnis HTML blokas, bet nedaug kas naujo.
+
+          <header> žymė skirta... headeriams. Dalykams puslapio viršuje: navigacijai, pavadinimui.
+          Viduje yra H1, pirmo lygio antraštė, kurios viduje yra nuoroda.
+
+          Šalia yra sąrašas, kuris dėl CSS nelabai *atrodo* kaip sąrašas.
+          Tai dažnas dalykas HTML ir CSS draugavime: kadangi su CSS galime padaryti, kad bet koks elementas atrodytų taip, kaip norime, HTML'e elementus renkamės ne pagal tai, kaip jie atrodo, o pagal jų prasmę. Navigacija yra visai prasminga kaip sąrašas, net jei galutiniame rezultate tai *neatrodo* kaip sąrašas.
+
+          Įdomus triukas: navigacijos nuorodos atrodo panašiai, kaip CSS taisyklės, aprašančios elementus su tam tikru ID (#basics, #javascript).
+          Šios nurodos veikia kaip peršokimas iki elemento su tuo ID!
+        -->
+      </div>
+    </div>
+    <div class="container">
+
+      <section class="intro row">
+        <p class="col-md-12 lead">
+          Sveikas, interneto žmogau! Ši puslapis skirtas mano žavingiesiems studentams. Jame yra visa esminė informacija ir pavyzdžiai, reikalingi pradėti interneto puslapių kūrimą.
+        </p>
+
+        <!--
+          Aukščiau ir žemiau matomi esminai Boostrap sistemos blokeliai: eilutės (class="row") ir kolonos (class="col-md-8" ir pan.)
+          Konstruojant išdėstymą su Boostrap reikia:
+
+          0. Pakrauti Boostrap.css failą, nes kitaip nebus pačios sistemos.
+          1. Viską įdėti į elementą, kuris turi class="container" (aptarta aukščiau)
+          2. Viską padalinti į vertikaliai sudėliotus blokus: tai bus eilutės su class="row".
+          3. To viduje galima dalinti į stulpelius, kurie užima kažkiek kolonų iš 12. Elementas su class="col-md-8" užims du trečdalius pločio (8/12) kol lango dydis bus Medium (md) arba daugiau.
+
+          Paragrafas viršuje yra pilno pločio (col-md-12).
+          Paragrafas žemiau yra dviejų trečdalių pločio (col-md-8).
+          Sąrašas jo dešinėje užima likusį trečdalį (col-md-4).
+
+          Vėlgi, viskas detaliai aprašyta Boostrap puslapyje: http://getbootstrap.com/css/#grid
+        -->
+
+        <div class="col-md-8">
+          <p>
+            Čia rasite HTML, CSS, JavaScript pavyzdžius, nuorodas, kur ieškoti daugiau informacijos. Norėdami sužinoti, kaip viskas padaryta, lengviausias būdas yra peržiūrėti puslapio kodą. Jei naršote per <a href="#">Chrome naršyklę</a> (rekomenduoju), šone esančios nuorodos atidaro puslapio kodą, kuriame yra labai daug komentarų ir paaiškinimų.
+          </p>
+          <p>
+            <strong>Rekomenduoju pirma perskaityti viską nežiūrint į kodą, o tuomet perskaityti visą kodą ir jame esančius komentarus.</strong> Šone esančios nuorodos tiesiog peršoka į šio puslapio sekcijas. Tikiuosi, čia esantys pavyzdžiai, jų kodas ir komentarai padės išspręsti didžiąją dalį bėdų ir neaiškumų. Keli patarimai prieš šokant į medžiagą:
+          </p>
+          <ul>
+            <li>
+              Esminis patarimas: rašykite kodą kuo tvarkingiau. Taip išvengsite 80% klaidų. HTML, CSS ir JavaScript nėra labai atlaidžios technologijos: praleistas kampinis skliaustas, dvigubas dvitaškis ar neparašytas kabliataškis gali sugriauti beveik visą dizainą. Rašykite kodą atidžiai, tvarkingai, atitraukinėdami nuo kraštų pagal hierarchiją... Kodo redaktoriai jums gali šiek tiek padėti nuspalvindami kodą, bet jie neparodys visų klaidų.
+            </li>
+            <li>
+              Nepradėkite nuo pačių originaliausių ir kosminių idėjų. Geriau veikiantis paprastesnis puslapis, nei neveikiantis ekspresyvus Photoshop paveiksliukas. Pradėkite nuo paprastų dalykų, nuo elementaraus išdėstymo, ir tada ant viršaus dėliokite gražią tipografiją, animacijas, jQuery pluginus. Interneto dizaine viskas įmanoma, bet ne viskas paprasta - kai kuriems sprendimams reikia ne vienų metų patirties.
+            </li>
+            <li>
+              Siūlau ieškoti atsakymų tokia tvarka: pirma, pažiūrėti ar šiame puslapyje nėra nieko panašaus. Čia esantis pavyzdinis kodas parašytas jums! Nusikopijuokite reikiamas dalis, pabandykite keisti, žiūrėti, kas sugriūna ir kas ne. Jei čia nėra jūsų norimo dalyko, Googlinkite. Jei ieškoti informacijos apie specifinį HTML ar CSS žymenį, pridėkite "MDN" prie paieškos frazės. Galiausiai, jei niekas neišeina, parašykite <a href="mailto:jonas@lekevicius.com">jonas@lekevicius.com</a>. Sėkmės!
+              <!--
+                Nuorodos adresai gali būti kelių skirtigų formų:
+
+                - href="paveiksliukas.jpg" veda į failą, esantį šalia dabartinio (reliatyvus adresas).
+                - href="http://google.com" veda į bet kokį kitą interneto puslapį (absoliutus adresas).
+                - href="mailto:jonas@lekevicius.com" yra el. pašto nuoroda, kuri atidaro el. pašto klientą.
+                - href="#intro" peršoka į tą puslapio vietą, kurioje yra elementas su ID "intro". Nice!
+              -->
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+
+          <h3>Puslapio kodas</h3>
+          <ul class="chrome-links">
+            <li><a href="view-source:http://vdk.lekevicius.com/index.html">Šio puslapio HTML kodas</a></li>
+            <li><a href="view-source:http://vdk.lekevicius.com/css/style.css">Šio puslapio CSS kodas</a></li>
+            <li><a href="view-source:http://vdk.lekevicius.com/js/script.js">Šio puslapio JavaScript kodas</a></li>
+          </ul>
+
+          <h3>Parsisiuntimai</h3>
+          <ul class="download-links">
+            <li><a href="#nope">Parsisiųsti visą šį puslapį (ZIP)</a></li>
+            <li><a href="get/starter.zip">Parsisiųsti pradinį, startinį kodą</a></li>
+          </ul>
+
+          <h3>Puslapio sekcijos</h3>
+          <ul>
+            <li><a href="#section-presentations">Prezentacijos</a></li>
+            <li><a href="#section-text-files">Darbas su tekstiniais failais</a></li>
+            <li><a href="#section-html">HTML pradmenys</a></li>
+            <li><a href="#section-css">CSS pradmenys</a></li>
+            <li><a href="#section-bootstrap">Išdėstymas su Boostrap</a></li>
+            <li><a href="#section-js">JavaScript ir jQuery</a></li>
+            <li><a href="#section-example">Tinklapio pavyzdys: Portfolio</a></li>
+            <li><a href="#section-web-inspector">Eksperimentavimas su Web Inspector</a></li>
+            <li><a href="#section-links">Nuorodos į daugiau informacijos</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="presentations row" id="section-presentations">
+        <div class="col-md-12 presentations-intro">
+          <h2>Prezentacijos</h2>
+          <p>Žemiau yra nuorodos į visų paskaitų prezentacijas. Šios prezentacijos yra mažai naudingos be mano gyvo pristatymo, bet gal kam nors bus naudingos prisiminti tam tikrą informaciją.</p>
+          <!-- Priminimas sau pačiam: ateityje paruošti video įrašus, kuriuose kiekvienos paskaitos medžiaga pristatoma per maždaug 10-15 minučių. -->
+        </div>
+
+        <article class="col-sm-4 col-xs-6">
+          <a href="https://speakerdeck.com/lekevicius/tinklapiu-dizainas-1-paskaita-interneto-praeitis-dabartis-ir-ateitis">
+            <img src="images/presentation-thumbnails/1.png" class="img-responsive">
+          </a>
+          <p></p>
+        </article>
+        <article class="col-sm-4 col-xs-6">
+          <a href="https://speakerdeck.com/lekevicius/tinklapiu-dizainas-2-paskaita-vartotojo-patirtis-ir-informacijos-architektura">
+            <img src="images/presentation-thumbnails/2.png" class="img-responsive">
+          </a>
+          <p></p>
+        </article>
+        <article class="col-sm-4 col-xs-6">
+          <a href="https://speakerdeck.com/lekevicius/tinklapiu-dizainas-3-paskaita-html-turinys-su-struktura">
+            <img src="images/presentation-thumbnails/3.png" class="img-responsive">
+          </a>
+          <p></p>
+        </article>
+
+        <article class="col-sm-4 col-xs-6">
+          <a href="https://speakerdeck.com/lekevicius/tinklapiu-dizainas-4-paskaita-css-aprasomasis-dizainas">
+            <img src="images/presentation-thumbnails/4.png" class="img-responsive">
+          </a>
+          <p></p>
+        </article>
+        <article class="col-sm-4 col-xs-6">
+          <a href="https://speakerdeck.com/lekevicius/tinklapiu-dizainas-5-paskaita-css-isdestymo-budai">
+            <img src="images/presentation-thumbnails/5.png" class="img-responsive">
+          </a>
+          <p></p>
+        </article>
+        <article class="col-sm-4 col-xs-6">
+          <a href="https://speakerdeck.com/lekevicius/tinklapiu-dizainas-6-paskaita-css-sriftai-animacijos-ir-kitos-galimybes">
+            <img src="images/presentation-thumbnails/6.png" class="img-responsive">
+          </a>
+          <p></p>
+        </article>
+
+
+        <article class="col-sm-4 col-xs-6">
+          <a href="https://speakerdeck.com/lekevicius/tinklapiu-dizainas-7-paskaita-grafika-tinklapiu-dizainui">
+            <img src="images/presentation-thumbnails/7.png" class="img-responsive">
+          </a>
+          <p></p>
+        </article>
+        <article class="col-sm-4 col-xs-6">
+          <a href="https://speakerdeck.com/lekevicius/tinklapiu-dizainas-8-paskaita-siuolaikinis-tinklapiu-dizaino-procesas">
+            <img src="images/presentation-thumbnails/8.png" class="img-responsive">
+          </a>
+          <p></p>
+        </article>
+        <article class="col-sm-4 col-xs-6">
+          <a href="https://speakerdeck.com/lekevicius/tinklapiu-dizainas-9-paskaita-javascript-tinklapiu-programavimo-kalba">
+            <img src="images/presentation-thumbnails/9.png" class="img-responsive">
+          </a>
+          <p></p>
+        </article>
+
+      </section>
+
+      <section class="files row" id="section-text-files">
+        <h2 class="col-md-12">Darbas su tekstiniais failais</h2>
+        <div class="col-md-5">
+          <img src="images/atom.png" class="img-responsive">
+          <small class="caption">Atom programos langas. Joje galima kurti naujus failus, redaguoti HTML, CSS ir JS.</small>
+        </div>
+        <div class="col-md-7">
+          <p>
+            HTML, CSS ir JavaScript (JS) failai yra <em>tekstiniai failai</em>. Jie skiriasi nuo .doc, .psd, .pdf ir panašių failų, tuo, jog šių failų turinį mes redaguojame tiesiogiai, ir tam nebūtinos konkrečios programos (kaip Word būtinas redaguoti .doc failus). Šiuose failuose nėra nieko magiško, jų kodą visada galima pamatyti ir perskaityti, kitaip nei, pavyzdžiui, Photoshop failo, kurio "kodas" yra neperskaitomas ir atidaromas tik per Photoshop programą.
+          </p>
+          <p>
+            Nors specialios programos nėra būtinos, yra patogu naudotis programa, kuri padeda rašyti HTML, CSS, JavaScript kodą. Šias programas naudoja programuotojai. Visos jos panašios savo funkcionalumu, kai kurios kainuoja, kai kurios veikia tik Windowsuose arba tik Mac. Rekomenduojamos programos:
+          </p>
+          <ul>
+            <li><a href="https://atom.io">Atom - Nemokama, veikia Windows ir Mac (rekomenduoju)</a></li>
+            <li><a href="http://notepad-plus-plus.org">Notepad++ - Nemokama, veikia tik Windows</a></li>
+            <li><a href="http://panic.com/coda/">Coda - Mokama, išskirtinai gera, tik Mac</a></li>
+            <li><a href="http://www.sublimetext.com">Sublime Text - Mokama, veikia Windows ir Mac</a></li>
+          </ul>
+          <p>
+            Paskutinis aspektas, kurį reikia suprasti dirbant su tekstiniais failais, yra jų "adresai". Kadangi failai yra paprasti ir tekstinai, jie negali turėti kitų failų "savo viduje" - dirbdami su Word ar Photoshop galime nutempti paveiksliuką ant failo, ir tada tas paveiksliukas bus mūsų .doc arba .psd viduje. Tekstiniuose failuose vienas failas nurodo adresą į kitą jam reikalingą failą. Adresai detaliai aptarti šio failo komentaruose. Du pavyzdžiai:
+          </p>
+          <ol>
+            <li><code>index.html</code> esantis adresas <code>css/bootstrap.css</code> nurodo į "css" folderyje esantį failą "boostrap.css".</li>
+            <li><code>css/style.css</code> esantis adresas <code>../images/logo.png</code> nurodo į "images" folderyje esantį failą "logo.png". Du taškeliai reiškia "vienu folderiu aukščiau". <code>../images/logo.png</code> reiškia pakilti vienu folderiu aukščiau į pagrindinį folderį, tada nusileisti į "images" folderį ir iš ten pasiimti "logo.png".</li>
+          </ol>
+          <!-- OL yra sunumeruotas sąrašas - visai patogu! -->
+        </div>
+      </section>
+
+    </div>
+
+    <div class="fancy-header html" id="section-html">
+      <div class="container">
+        <h2>HTML</h2>
+        <p>
+          HTML dokumentas - tai turinys su struktūra. Čia antraštės, paragrafai ir sąrašai <br>
+          aprašomi žymenimis, kurie turi prasmę, tačiau neturi dizaino.
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <section class="html-basics row">
+        <div class="col-md-12">
+          <p class="lead">
+            HTML (HyperText Markup Language) yra kalba, skirta aprašyti turinį ir jo struktūrą. Visas turinys dėliojamas į žymenis. Pavyzdžiui, paragrafas prasideda <code>&lt;p&gt;</code> ir baigiasi <code>&lt;/p&gt;</code>. Žymenys gali turėti kitus žymenis savo viduje, taip sukurdami į medį panašią informacijos struktūrą (šis medis vadinamas DOM - Document Object Model). Žymenys taip pat gali turėti atributus: peržiūrėkite šio puslapio kodą ir rasite apsčiai pavyzdžių. Labai svarbu suprasti, kad <strong>HTML paskirtis yra aprašyti elementus pagal prasmę, o ne pagal tai kaip jie atrodo</strong>. Jei pagal teksto struktūrą reikėtų dėti trečio lygio antraštę, nors penkto lygio antraštė "atrodytų gražiau", derėtų dėti trečio lygio antraštę ir pakeisti jos dizainą per CSS.
+          </p>
+        </div>
+
+        <div class="col-md-6">
+          <h3>Antraštės</h3>
+
+          <p>
+            Puslapiuose antraštės žymimos šešiais skirtingo lygio žymenimis, nuo <code>&lt;h1&gt;</code> (pirmo lygio antraštė, tokia turėtų būti tik viena puslapyje) iki <code>&lt;h6&gt;</code> (šešto lygio antraštė, retai kada turinys turi tokią sudėtingą struktūrą, kad jos prireikia). Čia matomi žodžiai "HTML esminai žymenys" yra antro lygio antraštė, o "Antraštės" yra trečio lygio antraštė.
+          </p>
+
+          <h3>Blokiniai turinio elementai</h3>
+          <p>
+            Vieni svarbiausių yra blokiniai turinio elementai. <code>&lt;p&gt;</code> žymi paragrafą. 
+            Ne visas tekstas privalo būti paragrafuose, tačiau yra <em>prasminga</em> teksto paragrafus dėti į paragrafų žymenis. 
+            Beveik visi HTML žymenys ignoruoja naujas eilutes, kurios yra kode. 
+            Jei pažiūrėtumėte šio paragrafo kodą, 
+            pamatytumėte, 
+            kad tekstas yra išskaidytas į atskiras eilutes, 
+            ir tai neatsispindi matomame vaizde. 
+            Norint įdėti naują eilutę 
+            (naudinga poezijoje ir pan.) 
+            galima naudoti <code>&lt;br&gt;</code> žemynį. Šis žymuo neturi savo uždarymo, t.y., <code>&lt;/br&gt;</code> neegzistuoja.
+          </p>
+          <p>
+            Kiti dažni turinio žymenys yra <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code> ir <code>&lt;li&gt;</code>.
+            <code>&lt;ul&gt;</code> apima paprastą sąrašą su taškiukais. 
+            <code>&lt;ol&gt;</code> apima sunumeruotą sąrašą.
+            <code>&lt;li&gt;</code> yra šių abiejų sąrašų vieno punkto žymė:  <code>&lt;ul&gt;</code> žymės viduje gali būti daug <code>&lt;li&gt;</code> žymenų.
+          </p>
+          <p>
+            Beveik visų šių blokinių turinio žymenų pavyzdžius galima rasti šio puslapio kode. Jie vadinami blokiniais žymenimis nes jie eina žemyn vienas po kito, pradėdami naujas eilutes. Du blokiniai elementai, net jei abu yra po vieną žodį, vis tiek bus vienas po kitu, kaip blokeliai. Be to, visi blokiniai elementai automatiškai turi CSS taisyklę <code>display: block;</code>.
+          </p>
+
+          <h3>Tekstiniai elementai</h3>
+
+          <p>
+            Priešingai nei blokiniai elementai, tekstiniai elementai skirti paskiriems žodžiams ir frazėms. <code>&lt;strong&gt;</code> <strong>pastorina tekstą,</strong> <code>&lt;em&gt;</code> <em>palenkia tekstą,</em> <code>&lt;a href="http://example.com"&gt;</code> <a href="http://example.com">padaro tekstą nuoroda</a>. Tekstiniai elementai automatiškai turi CSS taisyklę <code>display: inline;</code>.
+          </p>
+          <p>
+            Blokiniai elementai gali viduje turėti kitus blokinius elementus ir tekstinius elementus. Tekstiniai elementai viduje gali turėti kitus tekstinius elementus (tekstas gali būti <strong><em>pastorintas ir palenktas</em></strong>), bet <em>negali turėti blokinių elementų</em>. Antraštės yra blokiniai elementai. Vadinasi, nuoroda antraštėje <code>&lt;h2&gt;&lt;a&gt; ... &lt;/a&gt;&lt;/h2&gt;</code> yra teisinga, o antraštė nuorodoje <code>&lt;a&gt;&lt;h2&gt; ... &lt;/h2&gt;&lt;/a&gt;</code> - neteisinga.
+          </p>
+        </div>
+
+        <div class="col-md-6">
+          <h3>Kiti elementai</h3>
+
+          <img src="images/examples/farmtruck.jpg" width="400" height="300" alt="Farm truck">
+
+          <p>
+            Paveikslėliai yra pusiau tekstiniai, pusiau blokiniai, ir įterpiami su <code>&lt;img src="http://example.com/logo.png"&gt;</code> žyme. Paveikslėliai neturi savo uždarymo žymens, t.y., <code>&lt;/img&gt;</code> neegzistuoja.
+          </p>
+          <p>
+            Vieni dažniausių HTML elementų yra <code>&lt;div&gt;</code> ir <code>&lt;span&gt;</code>. Jie naudojami ten, kur reikia kažkokio elemento dėl stilistinės priežasties, bet tas elementas neturi turinio prasmės. <code>&lt;div&gt;</code> yra toks "beprasmis" blokinis elementas, o <code>&lt;span&gt;</code> yra analogiškai beprasmis tekstinis elementas. Žemiau esančiame JavaScript laikrodžio pavyzdyje rodyklės ir jų šešėliai yra <code>&lt;div&gt;</code> elementai: norint sukurti tokį efektą reikėjo <em>kažkokio</em> elemento, bet paragrafai ar antraštės netiktų, nes tai nėra paragrafas ar antraštė.
+          </p>
+          <p>
+            Galiausiai, du paskutiniai svarbūs elementai yra <code>&lt;link rel="stylesheet" href="..."&gt;</code> (be uždarymo) ir <code>&lt;script src="..."&gt;&lt;/script&gt;</code>. <code>&lt;link&gt;</code> pakrauna nurodytą CSS failą, o <code>&lt;script&gt;</code> pakrauna JavaScript failą. Šio puslapio kodo komentaruose tai aprašyta detaliau.
+          </p>
+          <p>
+            Galiausiai, detalią informaciją apie kiekvieną žymenį, su naudojimo pavyzdžiais, galimais atributais ir t.t. galima rasti <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer Network portale, HTML sekcijoje</a>.
+          </p>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="fancy-header css" id="section-css">
+      <div class="container">
+        <h2>CSS</h2>
+        <p>
+          CSS yra aprašomasis dizainas. Čia kuriame vaizdą ne vizualiai dėliodami <br>
+          elementus ar pasirinkdami šriftą iš sąrašo, o aprašydami tai kodu. <br>
+          Ir nors tai sudėtingiau, tai leidžia sukurti galingas dizaino sistemas
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <section class="css-basics row">
+        <div class="col-md-12">
+
+          <p class="lead">
+            CSS (Cascading Style Sheets) yra kalba, skirta aprašyti elementų išvaizdą. HTML savyje neturi jokio dizaino - visas dizainas gyvena CSS failuose. Su CSS galima keisti spalvas, šriftus, dydžius, tarpus, lygiavimą... CSS turi daugiau nei šimtą įvairių taisyklių, kurias galima pritaikyti elementams. CSS failo struktūra yra labai paprasta, ir susideda iš kodo blokelių, kurių kiekvino pradžioje yra <em>selektorius</em>, po jo seka <code>{</code>, taisyklės, ir uždarantis <code>}</code>:
+          </p>
+
+          <pre><code class="css">selektorius, kitas selektorius {
+  taisyklė: reikšmė;
+  kita-taisyklė: jos-reikšmė kartais-gali-būti iš-kelių-žodžių;
+}</code></pre>
+
+          <p>
+            Tad iš tiesų norint suprasti CSS, reikia išmokti vos du dalykus: kokie yra galimi selektoriai, ir kokios yra galimos taisyklės. Jei trumpai, elementus galima pasirinkti pagal HTML žymės pavadinimą (<code>p { ... }</code> selektorius pritaiko dizainą visiems paragrafams), HTML klasę (<code>.intro { ... }</code> pritaiko dizainą visiems elementams, turintiems class="intro" atributą) ir HTML id (<code>#menu { ... }</code> pritaiko dizainą elementui, turinčiam id="menu" atributą). Mano rekomenduojamas būdas išmokti pasirinkti elementus per CSS yra žaidžiant <a href="http://flukeout.github.io">CSS Diner žaidimą iki 12 lygio</a>. Siūlau pažaisti kelis kartus, kol suprasite kaip skirtingi selektoriai susiję tarpusavyje.
+          </p>
+        </div>
+
+        <div class="col-md-6">
+          <h3>Dydžių ir tarpų taisyklės</h3>
+
+          <div class="css-example-basic">
+            <div class="brick">
+              George R.R. Martin
+              <strong>A Game of Thrones</strong>
+            </div>
+          </div>
+
+          <p>
+            Vienos dažniausiai reikalingų taisyklių yra panaudotos šiame pavyzdyje. Šio ir kitų pavyzdžių <a href="">CSS kodas yra detaliai pakomentuotas</a>, ir jį galima patogiai peržiūrėti naudojantis Chrome naršykle.
+          </p>
+          <p>
+            Šios taisyklės yra dydžio (<code>width</code> ir <code>height</code>), atstumų ir tarpų (<code>margin</code> sukuria tarpus aplink elementą, o <code>padding</code> elemento viduje), rėmelio (pavyzdys turi viršaus rėmelį - raudoną juostelę - su <code>border-top</code> taisykle), spalvos (<code>color</code> keičia teksto spalvą) ir fono (tiek su spalva, tiek su tekstūra, per <code>background</code> taisyklę). Paskutinis elemento pagražinimas yra šešėlis, kurį lengva aprašyti su <code>box-shadow</code> taisykle. Viskas detaliai pakomentuota CSS faile.
+          </p>
+
+          <h3>Tipografijos taisyklės</h3>
+          
+          <div class="css-example-typography">
+            <p>The morning had dawned clear and cold, with a crispness that hinted at the end of summer. They set forth at daybreak to see a man beheaded, twenty in all, and Bran rode among them, nervous with excitement. This was the first time he had been deemed old enough to go with his lord father and his brothers to see the king's justice done. It was the ninth year of summer, and the seventh of Bran's life.</p>
+          </div>
+
+          <p>
+            CSS turi labai galingas tipografijos galimybes. Tekstui galima keisti šriftą su <code>font-family</code>, šrifto dydį su <code>font-size</code>, eilutės aukštį su <code>line-height</code>, pastorinti su <code>font-weight: bold;</code>, palenkti su <code>font-style: italic;</code>... Taip pat šis pavyzdys demonstruoja <code>float</code> taisyklę, kuri paima elementą ir numeta jį į nurodytą pusę, sulaužydama standartinį teksto bloką. Taip pasiektas didelės pirmosios raidės efektas.
+          </p>
+        </div>
+
+        <div class="col-md-6">
+          <h3>Retesnės taisyklės ir Web šriftai</h3>
+
+          <div class="css-example-advanced-typography">
+            <ul>
+              <li>House Stark</li>
+              <li>House Lannister</li>
+              <li>House Targaryen</li>
+              <li>House Baratheon</li>
+              <li>House Martell</li>
+              <li>House Tyrell</li>
+              <li>House Bolton</li>
+              <li>House Tully</li>
+              <li>House Greyjoy</li>
+              <li>House Arryn</li>
+              <li>House Frey</li>
+              <li>House Baelish</li>
+            </ul>
+          </div>
+
+          <p>Dar vienas pavyzdys parodo kelias įdomesnes CSS galimybes. CSS paslėpė <code>&lt;ul&gt;</code> sąrašo taškelius ir nuėmė atitraukimą nuo krašto, sudėjo tekstą į tris kolonas ir pakeitė lygiavimą. Kiekvienam punktui uždėtas apatinis rėmelis. Be to, tekstas naudoja specialų šriftą "Metamorphous", kuris pačioje pirmoje CSS failo eilutėje pakraunamas iš Google Web Fonts.</p>
+
+          <h3>CSS perėjimai, animacijos, transformacijos, filtrai</h3>
+
+          <div class="css-example-animations">
+            <div class="flag">
+              <div class="sigil"></div>
+              <div class="text">
+                <h4>Hear Me Roar</h4>
+                <div class="family">– House Lannister –</div>
+              </div>
+            </div>
+          </div>
+
+          <p>Užvesk pelę ant bloko viršuje. Visai nieko? Šis pavyzdys yra pats sudėtingiausias ir kartu pats įspūdingiausias. Jis demonstruoja perėjimus (animatuotą pasikeitimą tarp skirtingų būsenų), transformacijas (elementų išdidinimą, pajudininimą) ir filtrus (blur'inimą). Visos šiame pavyzdyje panaudotos CSS taisyklės yra detaliai pakomentuotos CSS faile, tačiau, kaip galima įtarti, šis pavyzdys nėra lengviausiai suprantamas.</p>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="fancy-header bootstrap" id="section-bootstrap">
+      <div class="container">
+        <h2>Bootstrap</h2>
+        <p>
+          Bootstrap yra populiauriausia pasaulyje CSS biblioteka. <br>
+          Ji supaprastina išdėstymą, dizainą, leidžia naudotis <br>
+          labai naudingais JavaScript pluginais.
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <section class="boostrap row">
+        <div class="boostrap-demo-layout col-md-6">
+          <h3>Išdėstymas ir tinklelio sistema</h3>
+
+          <div class="row">
+            <div class="col-md-6"> col-md-6 <div><img src="images/examples/banana.gif"></div></div>
+            <div class="col-md-4"> col-md-4 <div><img src="images/examples/banana.gif"></div></div>
+            <div class="col-md-2"> col-md-2 <div><img src="images/examples/banana.gif"></div></div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 col-xs-4"> col-md-2 col-xs-4 <div><img src="images/examples/banana.gif"></div></div>
+            <div class="col-md-2 col-xs-4"> col-md-2 col-xs-4 <div><img src="images/examples/banana.gif"></div></div>
+            <div class="col-md-2 col-xs-4"> col-md-2 col-xs-4 <div><img src="images/examples/banana.gif"></div></div>
+            <div class="col-md-2 col-xs-4"> col-md-2 col-xs-4 <div><img src="images/examples/banana.gif"></div></div>
+            <div class="col-md-2 col-xs-4"> col-md-2 col-xs-4 <div><img src="images/examples/banana.gif"></div></div>
+            <div class="col-md-2 col-xs-4"> col-md-2 col-xs-4 <div><img src="images/examples/banana.gif"></div></div>
+          </div>
+
+          <p>
+            Boostrap turi labai lanksčią išdėstymo tinklelyje sistemą. Ji yra labai detaliai ir su daug pavyzdžių aprašyta <a href="http://getbootstrap.com/css/#grid">Bootstrap puslapyje, Grid sekcijoje</a>. Būtent ją ir rekomenduoju naudoti kuriant puslapio išdėstymą: su ja paprasta sukonstruoti daug skirtingų išdėstymų, kurie labai lengvai gali adaptuotis prie skirtingų ekrano dydžių.
+          </p>
+          <p>
+            Jei trumpai: visas tinklelis turi būti įdėtas į elementą, kuris turėtų <code>class="container"</code>. Tuomet visą dizainą reikia suskaidyti į horizontalius pjūvius. Kiekvienam tokiam pjūviui sukurti naują elementą su <code>class="row"</code>. Galiausiai, šios eilutės viduje galima dėlioti vertikalius pjūvius, kolonas su <code>class="col-md-8"</code>.
+          </p>
+          <p>
+            Ką reiškia <code>col-md-8</code>? Pirma dalis, "col", reiškia, kad tai yra kolona, vertikalus pjūvis. Nereikia nurodyti šių blokelių aukščių, tik plotį, todėl jie neretai atrodo kaip kolonos. "md" yra sunkiausiai perkandama, bet esminė dalis: ji reiškia, kad šita taisyklė (bloko plotis) galios tik tuomet, kai ekranas yra "medium arba didesnis". Jei taisyklė "negalioja", blokas yra pilno pločio, ir užima tiek vietos, kiek tik leidžia jį laikantis elementas. "Medium" yra vienas iš keturių ekrano dydžių etapų. "xs" yra pats mažiausias, "xs" taisyklės galioja visada. "lg" yra pats didžiausias, šios taisyklės galioja tik prie labai didelių langų. Galiausiai, "8" nurodo plotį. "12" yra maksimalus plotis, 100%. "8" yra du trečdaliai (8/12). Vienas elementas gali turėti kelias taisykles: pavyzdžiui, žemiau esantys šokantys bananai yra blokeliuose, kurie turi tiek <code>col-md-2</code>, tiek <code>col-xs-4</code>. Vadinasi, kai langas yra "medium arba didesnis", galioja taisyklė, kuri padaro blokelį šeštadalio ploto. Bet kai langas susiaurėja, lieka galioti tik "xs" taisyklė, ir blokelis tampa trečdalio pločio. Pabandyk susiaurinti šį langą, ir pamatysi, kaip viskas persidėlioja.
+          </p>
+          <p>
+            Visas šis puslapis sudėliotas per Bootstrap Grid sistemą, tad jame yra daug pavyzdžių.
+            Dar kartą rekomenduoju perskaityti Bootstrap Grid dokumentaciją.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <h3>Kiti naudingi dalykai</h3>
+
+          <p>
+            Bootstrap, be tinklelio sistemos, turi dar <strong>labai</strong> daug naudingų dalykų. Visų pirma, jis suvienodina elementų išvaizdą tarp skirtingų naršyklių. Taip pat Boostrap turi ne vieną tiesiog naudingą klasę. Paveikslėliai su <code>class="img-responsive"</code> niekada nebus platesni nei juos laikantis elementas. Tai labai naudinga, nes tai leidžia turėti įvairaus dydžio paveikslėlius, kurie niekada nesugriauna dizaino ir neišlipa iš jiems skirtų rėmų. Analogiška klasė yra ir <a href="http://getbootstrap.com/components/#responsive-embed">prie pločio prisitaikantiems video</a>.
+          </p>
+
+          <p>Dar vienas smulkus dalykėlis, kurį turi pilnai įdiegtas Bootstrap (šalia CSS folderio įdėjus Fonts folderį), yra <a href="http://getbootstrap.com/components/#glyphicons">ikonos</a>.</p>
+
+          <blockquote>
+            Manau, kad kitą <span class="glyphicon glyphicon-plane"></span> bilietą pirksiu per <span class="glyphicon glyphicon-phone"></span> ir mokėsiu <span class="glyphicon glyphicon-euro"></span>. Man labai patinka <span class="glyphicon glyphicon-eye-open"></span> į <span class="glyphicon glyphicon-cloud"></span> iš viršaus.</span>
+          </blockquote>
+
+          <h3>Bootstrap jQuery pluginai</h3>
+          <p>
+            Nors JavaScript ir jQuery detaliau aprašytas žemiau, verta paminėti, kad Bootstrap turi nemažai labai gerų jQuery pluginų. Tarp jų pluginai 
+            <a href="http://getbootstrap.com/javascript/#modals">atidaryti modalinius langus,</a> 
+            <a href="http://getbootstrap.com/javascript/#tabs">sukurti tabus,</a> 
+            <a href="http://getbootstrap.com/javascript/#tooltips">parodyti informacinius burbuliukus,</a> 
+            <a href="http://getbootstrap.com/javascript/#affix">prikabinti elementus fiksuotoje vietoje</a>...
+          </p>
+          <p>
+            Vienas galingiausių Bootstrap pluginų yra Karuselė. Ji leidžia rodyti turinį lyg skaidres, kurios juda horizontaliai.
+          </p>
+
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+              <div class="item active">
+                <div class="carousel-slide">
+                  <p>There is only one god and his name is Death. And there is only one thing we say to Death: “Not today.”</p>
+                </div>
+              </div>
+              <div class="item">
+                <div class="carousel-slide">
+                  <p>Fear cuts deeper than swords.</p>
+                </div>
+              </div>
+              <div class="item">
+                <div class="carousel-slide">
+                  <p>Bran thought about it. 'Can a man still be brave if he's afraid?'<br>'That is the only time a man can be brave,' his father told him.</p>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="carousel-slide">
+                  <p>Why is it that when one man builds a wall, the next man immediately needs to know what's on the other side?</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+    <div class="fancy-header js" id="section-js">
+      <div class="container">
+        <h2>JavaScript ir jQuery</h2>
+        <p>
+          JavaScript yra interneto puslapių programavimo kalba, su kuria galima <br>
+          sukurti dinamiškas elgsenas, pluginus, reaguojančias animacijas... <br>
+          Beveik viską, ką tik galima sugalvoti. <br>
+          jQuery yra darbą su JavaScript suspaprastinanti biblioteka.
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <section class="javascript row">
+        <div class="col-md-12">
+          <p class="lead">
+            HTML yra turinio aprašymo kalba, CSS yra dizaino aprašymo kalba, tačiau nei HTML, nei CSS nėra "programavimo kalbos" tradicine prasme, nes su jomis negalima sukurti gyvos, veikiančios, reaguojančios programos. JavaScript yra tikra programavimo kalba, su kuria galima sukurti įdomius, dinamiškus tinklapius. Tačiau dėl savo galingumo JavaScript yra žymiai sudėtingesnė technologija nei HTML ar CSS, tad rekomenduoju pirma susigaudyti šiose technologijose. O jei esi pasiruošęs pridėti kažką tikrai originalaus ir gyvo savo puslapyje, išmokime programavimą!
+          </p>
+          <p>
+            Vienas geriausių būdų interaktyviai pažaisti ir išbandyti JavaScript yra "Web Console". Ją Chrome naršyklėje galima atsidaryti per meniu punktą "View → Developer → JavaScript Console". Atsidaro langas, panašus į chat'o. Jame galima vesti komandas, ir JavaScript jas įvykdo.
+          </p>
+        </div>
+
+        <div class="col-md-6">
+          <h3>Kintamieji ir reikšmės</h3>
+
+          <p>
+            Programavime kintamieji yra lyg dėžutės su pavadinimais, kuriose gyvena reikšmės. Naują dėžutę pavadinimu "miestas" galima susikurti parašius <code>var miestas;</code>. Tuomet reikšmę į dėžutę galima "įdėti" parašius <code>miestas = "Vilnius";</code>. Galima ta pačia eilute ir sukurti dėžutę, ir į ją įrašyti reikšmę: <code>var miestas = "Vilnius";</code>.
+          </p>
+
+          <p>
+            JavaScript kintamieji gali turėti kelių skirtingų tipų reikšmes:
+          </p>
+
+          <ul>
+            <li><code>var tekstas = "Žodis";</code> - tekstinės reikšmės įrašomos į kabutes.</li>
+            <li><code>var skaicius = 3;</code> - Pilnas (sveikasis) skaičius yra tiseiog skaičius.</li>
+            <li><code>var desimtainis = 3.14;</code> - Skaičiai su dešimtosiomis dalimis rašomi su tašku vietoje kablelio.</li>
+            <li>Yra ir daugiau tipų (sąrašai, žodynai ir t.t.)</li>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+          <h3>Veiksmai ir funkcijos</h3>
+
+          <p>
+            Su reikšmėmis galima atlikti veiksmus ir funkcijas. 
+            Su skaičiais galima atlikti matematinius veiksmus: <code>var suma = 15 + (16 / 2);</code>.
+            Su tekstu galima galima atlikti įvairias transformacijas, paiešką ir panašiai. Atlikus <code>var vardas = "Jonas".toUpperCase();</code>, kintamojo "vardas" reikšmė bus "JONAS".
+          </p>
+
+          <p>
+            JavaScript programų esmė yra funkcijos. Funkcija yra kodo gabalėlis su pavadinimu. Funkcijas galima iškviesti, vienos funkcijos gali iškvieti kitas. Paprasta funkcija atrodo taip:
+          </p>
+
+          <pre><code class="js">function sudetis(pirmasSkaicius, antrasSkaicius) {
+  var suma = pirmasSkaicius + antrasSkaicius;
+  return suma;
+}</code></pre>
+
+          <p>
+            Tokia funkcija nėra labai naudinga, bet ji turi visas funkcijai būdingas dalis: pavadinimą ("sudetis"), įvesties reiškmes ("pirmasSkaicius", "antrasSkaicius"), kodo gabaliuką (kartais funkcijos būna kelių šimtų eilučių ilgio) ir išvesties reikšmę ("return" grąžina reiškmę).
+          </p>
+
+        </div>
+
+        <div class="col-md-6">
+          <h3>JavaScript pavyzdys</h3>
+
+          <div class="javascript-clock-demo">
+            <div class="clock">
+              <div id="hours-shadow"></div>
+              <div id="hours"></div>
+              <div id="minutes-shadow"></div>
+              <div id="minutes"></div>
+              <div id="seconds-shadow"></div>
+              <div id="seconds"></div>
+            </div>
+          </div>
+
+          <p>
+            Šis pavyzdys demonstruoja visas pagrindines JavaScript galimybes: kintamuosius, jų reikšmes, funkcijas ir HTML elementų pasirinkimą per <code>document.getElementById</code>. Kiekvieną sekundę įvykdoma funkcija atnaujina laikrodžio rodyklių posūkio kampus.
+          </p>
+          <p>
+            Norint pilnai suprasti, kaip veikia JavaScript pavyzdys, reikia peržiūrėti tiek HTML kodą (jame yra elementai kiekvienai rodyklei), tiek CSS kodą (jame aprašytas visas laikrodžio dizainas), tiek JavaScript kodą (ten yra visas veikimas su daug komentarų).
+          </p>
+        </div>
+
+        <div class="col-md-6">
+          <h3>jQuery</h3>
+
+          <div class="jquery-demo">
+          </div>
+
+          <p>
+            jQuery yra naudingų JavaScript funkcijų rinkinys, specialiai sukurtas jog palengvintų dinamiškų tinklapių kūrimą.
+          </p>
+          <p>
+            jQuery itin supaprastina vieną sudėtingiausių aspektų JavaScript: elementų pasirinkimą. Jei norime per CSS pakeisti paragrafo ar antraštės dizainą, naudojame selektorius prieš taisyklių bloką. CSS selektoriuose galima paprastai pasirinkti elementus pagal žymens tipą, klasę ar id atributą. JavaScript kode dažniausiai irgi norisi dirbti su konkrečiais elementais, tačiau pasirinkti norimą elementą nėra taip paprasta kaip CSS. Standartiškai tenka rinktis objektus pagal id atributą naudojantis <code>document.getElementById</code> funkcija... Tai nepatogu ir labai ribota.
+          </p>
+          <p>
+            Kai jQuery biblioteka įdedama į puslapį (kaip ji įdėta į šį), galima naudotis funkcija, kuri vadinasi <code>$</code>. Ji skirta pasirinkti elementus naudojantis tokiais pačiais selektoriais, kokie naudojami CSS: <code>$("p.intro")</code> pasirinks ir leis kode keisti visus paragrafus, kurie turi klasę "intro". jQuery selektoriai veikia taip pat, kaip CSS.
+          </p>
+          <p>
+            Pasirinktus elementus galima keisti, trinti, animuoti... jQuery turi labai daug funkcijų, kurios <a href="http://api.jquery.com">visos aprašytos su pavyzdžiais</a>.
+          </p>
+          <p>
+            Galiausiai, jQuery yra labai praktiškai naudingas todėl, kad jam sukurta labai daug pluginų. Jų yra tūkstančiai, įvairiausioms reikmėms: <a href="http://www.turnjs.com/">animuotoms knygoms</a>, <a href="http://nanogallery.brisbois.fr/">galerijoms</a>, <a href="http://jqueryui.com/">vartotojo sąsajoms</a>, <a href="http://janpaepke.github.io/ScrollMagic">įdomiam scrollinimui</a> ir t.t. Net Boostrap savyje turi <a href="http://getbootstrap.com/javascript/">kelis jQuery pluginus</a>. Pavyzdys žemiau naudoja jQuery pluginą <a href="http://dimsemenov.com/plugins/magnific-popup/">Magnific Popup</a>.
+          </p>
+        </div>
+
+      </section>
+
+    </div>
+
+    <div class="fancy-header misc" id="section-misc">
+      <div class="container">
+        <h2>Kiti dalykai</h2>
+        <p>
+          Ši informacija turėtų praversti beieškant atsakymo: <br>
+          pilno puslapio pavyzdys, Web Inspector, ir nuorodos į puslapius, kurie pravers.
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <section class="example row" id="section-example">
+        <h2 class="col-md-12">Tinklapio pavyzdys: Portfolio</h2>
+        <div class="col-md-6">
+          <p>
+            Žemiau esantis fragmentas yra puslapio pavyzdys. Nors jis neturi nepriklausomo CSS ar JavaScript failo (jam reikalingas CSS ir JS kodas yra kartu su visu kitu šio puslapio kodu), demonstruoja esminius puslapio sudedamuosius komponentus: Boostrap išdėstymą, paveikslėlių įterpimą, šriftus, animacijas ir net jQuery pluginą (paspaudus ant paveiksliuko, jis atsidaro ant užtamsėjusio fono - tai daro <a href="http://dimsemenov.com/plugins/magnific-popup/">Magnific Popup</a> pluginas).
+          </p>
+          <p>
+            Visas šio fiktyvaus puslapio turinys yra sukurtas <a href="http://www.turnislefthome.com/">Timothy J. Reynolds</a>.
+          </p>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="portfolio-example">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 header">
+            <h3>Timothy J. Reynolds</h3>
+            <p class="tagline">3D Illustrator</p>
+          </div>
+          <div class="col-md-3 sidebar">
+            <ul>
+              <li><a href="#">Vehicles</a></li>
+              <li><a href="#">Animated GIFs</a></li>
+              <li><a href="#" class="current">Animal Kingdom</a></li>
+              <li><a href="#">Non-Isometrics</a></li>
+              <li><a href="#">Isometrics</a></li>
+              <li><a href="#">The Weekly 30</a></li>
+            </ul>
+          </div>
+          <div class="col-md-9 content">
+            <h4>Animal Kingdom</h4>
+            <p>Animal exploration and research. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis ipsam maxime esse illum, quam earum nam culpa reiciendis animi fuga fugit numquam, saepe deserunt iure atque in excepturi accusantium, sapiente.</p>
+            <div class="row gallery">
+
+              <div class="col-md-4">
+                <a href="images/examples/portfolio/bear.jpg">
+                  <img src="images/examples/portfolio/bear.jpg" class="img-responsive">
+                </a>
+              </div>
+              <div class="col-md-4">
+                <a href="images/examples/portfolio/chicken.jpg">
+                  <img src="images/examples/portfolio/chicken.jpg" class="img-responsive">
+                </a>
+              </div>
+              <div class="col-md-4">
+                <a href="images/examples/portfolio/elephant.jpg">
+                  <img src="images/examples/portfolio/elephant.jpg" class="img-responsive">
+                </a>
+              </div>
+
+              <div class="col-md-4">
+                <a href="images/examples/portfolio/horse.jpg">
+                  <img src="images/examples/portfolio/horse.jpg" class="img-responsive">
+                </a>
+              </div>
+              <div class="col-md-4">
+                <a href="images/examples/portfolio/mammoth.jpg">
+                  <img src="images/examples/portfolio/mammoth.jpg" class="img-responsive">
+                </a>
+              </div>
+              <div class="col-md-4">
+                <a href="images/examples/portfolio/penguin.jpg">
+                  <img src="images/examples/portfolio/penguin.jpg" class="img-responsive">
+                </a>
+              </div>
+
+              <div class="col-md-4">
+                <a href="images/examples/portfolio/reindeer.jpg">
+                  <img src="images/examples/portfolio/reindeer.jpg" class="img-responsive">
+                </a>
+              </div>
+              <div class="col-md-4">
+                <a href="images/examples/portfolio/squirrel.jpg">
+                  <img src="images/examples/portfolio/squirrel.jpg" class="img-responsive">
+                </a>
+              </div>
+              <div class="col-md-4">
+                <a href="images/examples/portfolio/toucan.jpg">
+                  <img src="images/examples/portfolio/toucan.jpg" class="img-responsive">
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+
+      <section class="debugging row" id="section-web-inspector">
+        <div class="col-md-12">
+          <h2>Eksperimentavimas su Web Inspector</h2>
+          <img src="images/web-inspector-2.png" class="img-responsive spaced">
+        </div>
+
+        <div class="col-md-4">
+          <img src="images/web-inspector-1.png" class="img-responsive">
+        </div>
+
+        <div class="col-md-8">
+          <p>
+            Labai galingas įrankis eksperimentavimui, klaidoms atrasti ir naujiems dalykams išbandyti yra "Web Inspector". Jį galima iškviesti Chrome right-clickinus bet kokį elementą ir pasirinkus “Inspect Element”. Atsidariusiame lange galima keisti puslapio turinį, dizainą, parsisiųsti naudojamus resurus, išbandyti JavaScript konsolę ir t.t.
+          </p>
+          <p>
+            <strong>Elements</strong> tabas yra skirtas interaktyviam HTML ir CSS keitimui. Galima keisti turinį, klases, dydžius, visų CSS taisykių reikšmes. Pakeitimai bus matomi gyvai, tačiau nebus išsaugoti į HTML ar CSS failą: jei norite išsaugoti, reikia tuos pačius pakeitimus atlikti kode, per redagavimo programą.
+          </p>
+          <p>
+            <strong>Resources</strong> tabas leidžia pamatyti visus puslapio naudojamus resursus: paveikslėlius, fontus, CSS failus ir t.t. Tai patogu tyrinėjant kitų sukurtus puslapius.
+          </p>
+          <p>
+            <strong>Console</strong> tabas yra interaktyvus chat'as su JavaScriptu. JavaScript įvykdys visas komandas, parašytas į esantį laukelį. Komandos vykdomos tiesiai puslapyje, tad taip galima eksperimentuoti su JavaScript ir jQuery galimybėmis, funkcijomis, pluginais.
+          </p>
+        </div>
+
+      </section>
+
+      <section class="links row" id="section-links">
+        <h2 class="col-md-12">Nuorodos į daugiau informacijos</h2>
+        <div class="col-md-4">
+          <h3>Dizainas</h3>
+        </div>
+        <div class="col-md-4">
+          <h3>HTML, CSS, JavaScript</h3>
+        </div>
+        <div class="col-md-4">
+          <h3>Kiti interneto dalykai</h3>
+        </div>
+      </section>
+    </div>
+  </body>
 </html>
