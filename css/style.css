@@ -1,102 +1,317 @@
 @import url(http://fonts.googleapis.com/css?family=Metamorphous);
 @import url(http://fonts.googleapis.com/css?family=Josefin+Sans:700);
 
+/*
+  Taip atrodo komentaras CSS faile: jis prasideda slash-žvaigždutė, baigiasi žvaigždutė-slash.
+
+  Pirmos dvi eilutės pakrauna du šriftus iš Google Web Fonts.
+  @import nurodo kitą CSS failą, šie yra iš Google. Galite atsidaryti tuos adresus, ir pamatysite, kad ten tiesiog kitas CSS failas.
+  Šios eilutės turi būti pradžioje, antraip neveiktų.
+
+  Bendrai šis dokumentas turi tokią struktūrą:
+  - Pradžioje yra įvairių demonstracijų kodas, sugrupuotas pagal demonstraciją. 
+    Naujos CSS taisyklės ir jų reikšmės yra pakomentuotos.
+
+  - Kiekviena demonstracija yra šiek tiek sudėtingesnė už kitą, ir bendrai CSS turi nemažą kiekį "hackų": 
+    būdų kažką priversti dirbti / atrodyti kaip norime, nebūtinai pačiu paprasčiausiai suprantamu būdu. Deja, taip yra.
+
+  - Po demonstracijų eina viso likusio puslapio dizaino CSS.
+    Vėlgi, jis nėra pats paprasčiausias, tačiau demonstruoja įvairias technikas.
+
+  Nepamirškite, kad daugiau informacijos apie kiekvieną CSS taisyklę galite rasti MDN.
+  CSS gali būti labai lengvai sulūžti jei praleisite kažkokį ženklą ar reikšmę.
+
+  Pradėkime!
+*/
+
+
+/********** PIRMAS PAVYZDYS - PAPRASTAS BLOKAS **********/
+
+
 .css-example-basic {
+  /*
+    CSS blokai susideda iš dviejų dalių: selektoriaus ir taisyklių.
+    Ši struktūra yra gana paprasta.
+
+    Selektorius yra būdas pasirinkti HTML elementus.
+
+    p { ... } pasirenka visus <p> elementus.
+    p, h1, h2 { ... } pasirenka visus <p>, <h1> ir <h2> elementus.
+    h1 a { ... } pasirenka visus <a> elementus kurie yra <h1> viduje.
+
+    .container { ... } pasirenka visus elementus, kurie turi class="container".
+    #page { ... } pasirenka elementą, kuris turi id="page".
+
+    Selektorius galima įvairiai jungti.
+    Geras mokomasis žaidimas yra CSS Diner: http://flukeout.github.io
+
+
+    Po selektoriaus eina vingiuoti skliaustai, o jų viduje taisyklės. 
+    Taisyklės turi vienodą formą:
+
+    taisyklė: reikšmė;
+    kita-taisyklė: jos-reikšmė kartais-gali-būti iš-kelių-žodžių;
+
+    Žemiau yra daug to pavyzdžių.
+    Visas CSS sudėtingumas yra taisyklių ir jų reikšmių žinojimas, ir gebėjimas kūrybiškas jas išnaduoti.
+  */
   background: url(../images/examples/brickwall.png);
+  /*
+    background yra fono taisyklė. Ji gali nurodyti į paveikslėlį, kaip nurodo ši. Tai pat gali būti spalva:
+    background: red;
+    background: #ff9900;
+    background: #f90;
+  */
   padding: 1px;
+  /*
+    Padding yra vidiniai elemento tarpai. 
+    Galima įsivaizduoti knygos lapą: padding bus atstumas nuo lapo krašto iki vietos, kurioje jau rašomas tekstas.
+
+    Tiek padding, tiek margin gali turėti kelias skirtingas reikšmių formas:
+
+    padding: 10px; - padaro, kad iš visų keturių šonų tarpai yra po 10px.
+    padding: 10px 20px; - padaro, kad tarpai iš viršaus ir apačios yra 10px, o iš šonų - po 20px.
+    padding: 11px 12px 13px 14px; - padaro, kad tarpas iš viršaus yra 11px, iš dešinės 12px, iš apačios 13px, iš kairės 14px.
+    padding: 0; - nuima vidinius tarpus.
+  */
   border-radius: 10px;
+  /*
+    Border-radius užapvalina elemento kampus nurodytu spinduliu.
+  */
   margin-top: 40px;
+  /*
+    Margin yra elemento išorės tarpai.
+    Knygos pavyzdyje - tai kiek vietos yra aplink pačią knygą, tarp kitų daiktų.
+
+    Čia yra kitas būdas užrašyti tarpus: galima nurodyti konkretų šoną ir duoti tam reikšmę.
+    Tas pats galiotų ir su padding.
+  */
   margin-bottom: 40px;
 }
 
 .css-example-basic .brick {
   width: 240px;
   height: 100px;
-
+  /*
+    Width ir Height norodo elemento dydį. Paprasta ir aišku.
+  */
   margin: 108px auto 96px auto;
+  /*
+    Margin čia veikia panašiai, kaip komentare apie padding.
+    Speciali ir nauja reikšmė yra auto.
 
+    Margin atveju, jei abi šoninės reikšmės yra auto, elementas su fiskuotu pločiu bus horizontaliai centruotas.
+  */
   padding: 30px 20px;
-
+  /*
+    Tokia taisyklė padaro, kad viršus ir apačia turi vidinius tarpus po 30px, o šonai - po 20px.
+  */
   background: #fafafa;
+  /*
+    Fono spalvos pavyzdys. Tokias raidines reikšmes galima paimti iš Photoshop spalvų pickerio.
+  */
 
   border-top: 4px solid #760000;
+  /*
+    Border taisyklės leidžia uždėti rėmus.
+    Ši taisyklė uždeda tik viršutinį rėmą.
+
+    Border taisyklė susideda iš 3 dalių: pločio, stiliaus ir spalvos.
+  */
 
   box-shadow: 0 4px 16px rgba(32, 10, 8, 0.3);
+  /*
+    Box-shadow taisyklė yra gana sudėtinga, bet efektinga. 
+    Jos reikšmių dalys yra: x-postūmis y-postūmis blur-dydis spalva.
+
+    Čia spalva yra nurodyta kaip RGBA, nurodant kiekvieno iš keturių kanalų reikšmes: red, green, blue, alpha (permatomumas).
+  */
 }
 
 .css-example-basic .brick strong {
   display: block;
+  /*
+    Savaime <strong> būtų tekstinis elementas (display: inline), ir nesukurtų naujos eilutės.
+    Elementą galima paversti blokiniu su display: block; taisykle.
+  */
   font-size: 1.2em;
+  /*
+    EM yra reliatyvus šrifto dydis, ir čia reiškia "1.2 karto didesnis nei tekstas aplink".
+  */
   color: #60201b;
 }
 
+
+/********** ANTRAS PAVYZDYS - PAPRASTA TIPOGRAFIJA **********/
+
+
 .css-example-typography p {
   font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
+  /*
+    Font-family taisyklė leidža pakeisti šriftą. 
+    Šriftai rašomi sąrašu, atskirtu kableliais. 
+    Naršyklė stengsis parinkti kuo geriau tinkantį šriftą: pradės nuo pirmo, jei jis nėra instaliuotas tikrins antrą, ir taip toliau..
+    Todėl labai svarbu sąrašą pabaigtą viena iš bendrinių reikšmių: serif, sans-serif arba monospace.
+  */
   font-size: 16px;
+  /*
+    Font-size nurodytas pixeliais pakeičia šrifto dydį į nurodytą.
+  */
   line-height: 1.5;
+  /*
+    Line-height irgi yra reliatyvus šrifto dydis. 
+    Dažniausiai reikšmė 1 reiškia "susigrūdęs tekstas, bet eilutės nelipa viena ant kitos".
+    Reikšmė 1.4 arba 1.5 (pusantro karto daugiau nei standartiškai) yra geriausiai atrodančios.
+  */
   text-align: justify;
+  /*
+    Teksto lygiavimas. Tekstą galima lygiuoti left, right, center arba justify.
+  */
 
   padding-top: 40px;
   padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
+  /*
+    Tai yra tas pats, kaip rašyti
+    padding: 40px 20px;
+    arba
+    padding: 40px 20px 40px 20px;
+  */
 }
 
 .css-example-typography p::first-line {
+  /*
+    Čia yra įdomus selektorius: jis pasirenka "virtualų elementą", tik pačią pirmą eilutę.
+  */
   font-size: 20px;
   font-style: italic;
+  /*
+    Font-style gali būti normal arba italic (palinkęs tekstas).
+  */
   letter-spacing: 1px;
+  /*
+    Letter-spacing nurodo papildomą tarpą tarp raidžių. Nepersistenkite.
+  */
 }
 
 .css-example-typography p::first-letter {
   font-weight: bold;
+  /*
+    Font-weight gali būti bold arba normal. Bold yra... bold.
+  */
   font-style: normal;
+  /*
+    Kadangi ::first-line buvo italic, ::first-letter irgi būtų italic (nes pirma raidė yra pirmos eilutės dalis).
+    Tą galima nuimti pasirinkus font-style: normal;
+  */
   font-size: 90px;
   float: left;
+  /*
+    Float yra turbūt sunkiausiai suprantama CSS taisyklė.
+    Ji sukuria būtent tokį efektą, kokį matote: elementas iššoka iš teksto ir "įsistato" į tam tikrą šoną.
+    Šita raidė užima teksto kairį viršutinį kampą dėl float taisyklės.
+  */
   margin-right: 20px;
   margin-bottom: 10px;
 
   line-height: 1;
+  /*
+    Pirmai raidei nuimu padidintą eilutės aukštį, jog nebūtų per daug vietos iš apačios.
+  */
 }
+
+
+/********** TREČIAS PAVYZDYS - SUDĖTINGESNĖ TIPOGRAFIJA **********/
+
 
 .css-example-advanced-typography ul {
   font-family: 'Metamorphous', serif;
+  /*
+    Metamorphus yra vienas iš šriftų, kuris pakrautas iš Google Web Fonts šio failo pradžioje.
+    Kadangi žinome, kad jis bus parsiųstas, nereikia nurodyti daug alternatyvų - tik bazinę.
+  */
   list-style: none;
+  /*
+    <ul> savaime yra sąrašo elementas, ir turi taškelius.
+    Su List-style juos galima nuimti arba pakeisti į kitą simbolį.
+  */
   padding: 0;
   margin: 40px 0;
   text-align: center;
   -webkit-columns: 3;
   -webkit-column-gap: 20px;
+  /*
+    Columns ir Column-gap yra eksperimentinės žymės: todėl jos turi "-webkit-" priešdėlį.
+
+    Jos leidžia išdėlioti tekstą keliais stulpeliais, su nurodytu tarpu tarp stulpelių.
+  */
 }
 
 .css-example-advanced-typography li {
   padding: 10px 0 7px 0;
   margin-bottom: 20px;
   border-bottom: 3px double #aaa;
+  /*
+    Apatinio rėmelio pavyzdys. Šis naudoja ne "solid", "double" stilių.
+  */
 }
 
-.perspective {
-  
-}
+
+/********** KETVIRTAS PAVYZDYS - ANIMACIJA **********/
+
+/*
+  Perspėjimas: šis pavyzdys sudėtingas, ir pilnas daug naujų CSS taisyklių.
+  Gali būti sunku susigaudyti, jei dar tik pradedate suprasti CSS.
+*/
 
 .css-example-animations {
   -webkit-perspective: 1000;
+  /*
+    Perspective yra eksperimentinė, mistiška reikšmė. 
+    Jei reikalinga sukurti 3D efektą. 
+    Kuo skaičius mažesnis, tuo 3D efektas stipresnis.
+  */
 }
 
 .css-example-animations .flag {
   background: #ad0000 url(../images/examples/flag.png) center center no-repeat;
   background-size: cover;
+  /*
+    Čia vienoje vietoje yra beveik visos Background reikšmės galimybės.
+    Šis fonas turi ir spalvą, ir paveiksliuką.
+    Paveiksliukas yra centruotas pagal x ir y ašį ir yra nekartojamas kaip tekstūra (no-repeat).
+    Kita taisyklė, background-size, garantuoja kad paveiksliukas visada uždengs visą elementą, nesvarbu koks jo dydis bebūtų.
+  */
   height: 300px;
   border-radius: 10px;
   margin-top: 40px;
   margin-bottom: 40px;
   position: relative;
+  /*
+    Position relative gali būti sunku suprasti.
+    Ši taisyklė savaime beveik nieko nedaro, tačiau jei ją uždedi elementus, 
+    visi jos viduje esantys elementai turintys position: absolute bus reliatyvūs šiam blokui.
 
+    Kitaip tariant, jei position: relative nebūtų, .sigil, kuris turi position: absolute, būtų viso puslapio centre.
+    Kadangi šis blokas turi position: relative, .sigil pasaulis apsiriboja šiuo elementu, ir .sigil bus šio elemento centre.
+  */
   overflow: hidden;
-
+  /*
+    Overflow: hidden garantuoja, kad niekas neišlys iš šio elemento ribų.
+  */
   -webkit-transform: translate3d(0, 0, 0);
-
+  /*
+    Tokia eilutė yra "hackas".
+    Ji įjungia elemento 3D transformacijas, ir jo animacijos vyks sklandžiau.
+    Šią eilutę verta naudoti visur, kur naudojate transformacijas ir animacijas.
+  */
   transition: all 0.6s;
+  /*
+    Transition yra taisyklė, kuri sukuria visas animacijas.
+    Ši taisyklė nurodo, kad jei elementui turėtų keistis bet kurios CSS taisyklės (all) reikšmė,
+    jog ji pasikeistų ne iškarto, o per 0.6s.
+  */
 }
 
 .css-example-animations .sigil {
@@ -106,9 +321,22 @@
   top: 50%;
   left: 50%;
   margin: -90px 0 0 -90px;
+  /*
+    Šios šešios CSS taisyklės kartu sukuria horizontalų ir vertikalų centravimą.
+    Tai dar vienas "hackas", ir ne pats paprasčiausias.
+
+    Pirma elementui duodame fiksuotą aukštį ir plotį.
+    Tada su position: absolute;, top: 50%; ir left: 50%; padarome taip, 
+    kad elemento viršutinis kairysis kampas atsiranda .flag centre.
+    Galiausiai, su neigiamais viršaus ir kairės šonais patraukiame elementą per pusę jo dydžio atgal.
+
+    Rezultatas yra vertikaliai ir horizontaliai centruotas elementas.
+  */
   background: url(../images/examples/sigil.png) no-repeat;
   opacity: 0.7;
-
+  /*
+    Opacity padaro elementą permatomą. 1 yra visai nepermatomas. 0 yra nematomas.
+  */
   transition: all 0.9s;
 }
 
@@ -119,17 +347,32 @@
   top: 180px;
   left: 50%;
   margin-left: -150px;
+  /*
+    Šis elementas naudoja panašų centravimą kaip .sigil, tačiau centruoja tik horizontaliai.
+  */
   text-align: center;
   color: #fff;
 
   font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
   text-transform: uppercase;
+  /*
+    Text-transform transformuoja tekstą: uppercase paverčia visas raides didžiosiomis.
+  */
   letter-spacing: 3px;
 
   -webkit-transform: translate(0, 160px) scale(1.4);
-  -webkit-filter: blur(20px);
-  opacity: 0.3;
+  /*
+    Tai yra pirma tikra CSS transformacija.
+    Ji turi dvi reikšmes, atskirtas tarpu.
 
+    Pirma reikšmė - translate - pastumia objektą per 0 x ašimi, ir per 160px y ašimi.
+    Scale reikšmė išdidina elementą.
+  */
+  -webkit-filter: blur(20px);
+  /*
+    CSS filtrai yra visiškai eksperimentiniai, bet leidžia pasiekti blur efektą.
+  */
+  opacity: 0.3;
   transition: all 1s;
 }
 
@@ -143,6 +386,9 @@
 }
 
 .css-example-animations .flag:hover {
+  /*
+    
+  */
   background-color: red;
   -webkit-transform: scale(1.1) rotateX(18deg);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
@@ -371,33 +617,12 @@
 }
 
 
-.mfp-with-zoom .mfp-container,
-.mfp-with-zoom.mfp-bg {
-  opacity: 0;
-  -webkit-backface-visibility: hidden;
-  /* ideally, transition speed should match zoom duration */
-  -webkit-transition: all 0.3s ease-out; 
-  -moz-transition: all 0.3s ease-out; 
-  -o-transition: all 0.3s ease-out; 
-  transition: all 0.3s ease-out;
-}
-
-.mfp-with-zoom.mfp-ready .mfp-container {
-    opacity: 1;
-}
-.mfp-with-zoom.mfp-ready.mfp-bg {
-    opacity: 0.8;
-}
-
-.mfp-with-zoom.mfp-removing .mfp-container, 
-.mfp-with-zoom.mfp-removing.mfp-bg {
-  opacity: 0;
-}
 
 
-img.spaced {
-  margin: 30px 0;
-}
+
+
+
+
 
 body {
   font-family: "freight-text-pro", serif;
@@ -405,6 +630,43 @@ body {
   line-height: 1.6;
   padding: 260px 0 60px 0;
 }
+
+a {
+  color: #a450dc;
+}
+
+a:hover {
+  color: #682f8d;
+}
+
+code {
+  color: #5b456f;
+  background-color: #f7f2fa;
+  font-size: 0.8em;
+}
+
+small.caption {
+  font-style: italic;
+  color: #aaa;
+}
+
+img.spaced {
+  margin: 30px 0;
+}
+
+.padded {
+  margin-bottom: 60px;
+}
+
+ul.checklist {
+  list-style: circle;
+}
+
+ul.checklist h5 {
+  font-size: 1.2em;
+}
+
+
 
 #header {
   position: fixed;
@@ -499,29 +761,11 @@ body {
   color: #666;
 }
 
-a {
-  color: #a450dc;
-}
-
-a:hover {
-  color: #682f8d;
-}
 
 
-code {
-  color: #5b456f;
-  background-color: #f7f2fa;
-  font-size: 0.8em;
-}
-
-small.caption {
-  font-style: italic;
-  color: #aaa;
-}
 
 .presentations article a {
   display: block;
-  /*background: black;*/
   box-shadow: 0 1px 3px rgba(0,0,0,0.3);
   border-radius: 6px;
   margin: 16px 0;
@@ -543,6 +787,10 @@ small.caption {
   font-style: italic;
   color: #888;
 }
+
+
+
+
 
 .fancy-header {
   margin: 40px 0;
@@ -574,14 +822,30 @@ small.caption {
   font-style: italic;
 }
 
-ul.checklist {
-  list-style: circle;
+
+
+
+
+
+.mfp-with-zoom .mfp-container,
+.mfp-with-zoom.mfp-bg {
+  opacity: 0;
+  -webkit-backface-visibility: hidden;
+  /* ideally, transition speed should match zoom duration */
+  -webkit-transition: all 0.3s ease-out; 
+  -moz-transition: all 0.3s ease-out; 
+  -o-transition: all 0.3s ease-out; 
+  transition: all 0.3s ease-out;
 }
 
-ul.checklist h5 {
-  font-size: 1.2em;
+.mfp-with-zoom.mfp-ready .mfp-container {
+    opacity: 1;
+}
+.mfp-with-zoom.mfp-ready.mfp-bg {
+    opacity: 0.8;
 }
 
-.padded {
-  margin-bottom: 60px;
+.mfp-with-zoom.mfp-removing .mfp-container, 
+.mfp-with-zoom.mfp-removing.mfp-bg {
+  opacity: 0;
 }
