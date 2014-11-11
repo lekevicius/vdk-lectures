@@ -387,11 +387,25 @@
 
 .css-example-animations .flag:hover {
   /*
-    
+    Čia pirmą kartą matosi :hover selektorius.
+    Tokie dvitaškio selektoriai leidžia pasirinkti elementą specialiose situacijose.
+    Konkrečiai, :hover taisyklės galioja tik tuomet, kai pelė yra užvesta ant pasirinkto elemento.
+
+    Šiuo atveju tai naudojama animacijai: elementai turi vienokį stilių paprastai,
+    ir kitokį stilių kai pelė yra užvesta ant .flag elemento.
+    Perėjimai tarp šių situacijų yra animuoti su transition taisykle.
   */
   background-color: red;
   -webkit-transform: scale(1.1) rotateX(18deg);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  /*
+    Šios trys taisyklės - fono spalva, transformacija ir šešėlis pasikeičia,
+    kai pelė užvedama ant elemento. 
+    Iš jų įdomiausia yra taisyklės dalis rotateX(18deg).
+    RotateX nurodo vieną iš 3 3D transformacijos ašių - X ašį.
+    Todėl posūkis yra ne 2D, o 3D erdvėje.
+    Su CSS elementus gali judinti ir sukioti visomis trimis ašimis.
+  */
 }
 
 .css-example-animations:hover .sigil {
@@ -401,9 +415,20 @@
 
 .css-example-animations:hover .text {
   -webkit-transform: scale(1) translate(0, 0);
+  /*
+    Scale(1) atstato scale yra standartinį dydį.
+    Translate(0, 0) atstato elementą į jo paprastą vietą (t.y. nuima prieš tai nustatytą translate reikšmę).
+  */
   -webkit-filter: blur(0);
+  /*
+    Blur(0) nuima blurą - elementas išryškėja animuotai.
+  */
   opacity: 1;
 }
+
+
+/********** PENKTAS PAVYZDYS - BOOTSTRAP LAYOUT **********/
+
 
 .boostrap-demo-layout .row {
   margin-bottom: 24px;
@@ -413,6 +438,14 @@
 .boostrap-demo-layout .row  div {
   text-align: center;
   background: hsla(45, 80%, 63%, 0.2);
+  /*
+    HSLA yra dar vienas būdas nurodyti spalvas CSS.
+    Jis reiškia Hue-Saturation-Lightness-Alpha.
+    Hue yra skaičius nuo 0 iki 360, spalvos kampas spalvų rate.
+    Saturation yra skaičius nuo 0% iki 100%, spalvos sodrumas. 0% yra pilka spalva.
+    Lightness, nuo 0% iki 100%, yra spalvos šviesumas. 0% yra juoda. 100% yra balta.
+    Alpha, kaip ir RGBA, yra permatomumas, skaičius nuo 0 iki 1.
+  */
   border-radius: 2px;
   padding-top: 6px;
   padding-bottom: 6px;
@@ -428,34 +461,88 @@
   margin-top: 8px
 }
 
+
+/********** ŠEŠTAS PAVYZDYS - BOOTSTRAP KARUSELĖS PLUGINAS **********/
+
+
+/*
+  Bootstrap automatiškai nustato labai daug CSS taisyklių, jog jų karuselės pluginas veiktų.
+  Žemiau esantis CSS yra skirtas pakeisti automatinį dizainą.
+*/
+
 #carousel-example-generic {
   margin: 40px 0;
   background: #dfcbbb url(../images/examples/flag.png) center center no-repeat;
   background-size: cover;
+  /*
+    Visam blokui uždedamas fonas. Dar vienas pavyzdys, kuriame naudojamos visos background taisyklės savybės.
+  */
 }
 
 .carousel-slide {
   height: 300px;
+  /*
+    Kiekviena "skaidrė" turi fiksuotą aukštį.
+  */
 }
 
 .carousel-slide p {
   font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
   letter-spacing: 1px;
+  
+  font-size: 24px;
+  color: #fff;
+  opacity: 0.7;
+  /*
+    Šios taisyklės keičia matomą dizainą: šriftus, spalvą, permatomumą. Nieko įspūdingo.
+  */
+
   text-align: center;
+  /*
+    Text-align: center; pasirūpina, kad tekstas būtų centruotas.
+    Jei žemiau esančių taisyklių nebūtų, paragrafas būtų per visą skaidrės 
+    plotį (eitų iki pat kraštų), bet būtų centruotas.
+  */
+
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
-  width: 70%;
-  font-size: 24px;
+  /*
+    Šios trys eilutės yra klasikinis būdas centruoti elementą horizontaliai.
+
+    Nustatome width, kuris čia yra 70% apimančio elemento pločio (skaidrės pločio).
+    Tai garantuoja, kad tekstas niekada nebus prilipęs prie šono, 
+    ir yra pakankamas tarpas iki rodyklių karuselės šonuose.
+
+    Tuomet nustatome abu šoninius margin į auto.
+    Tai lemia, kad margin automatiškai pasidalins visą laisvą vietą aplink elementai.
+    Šiuo atveju, laisvos vietos yra 30% (elementas sako, kad nori 70% pločio).
+    Šoniniai margin'ai pasidalins po 15%, ir elementas bus horizontaliai centruotas.
+  */
+
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
-  color: #fff;
-  opacity: 0.7;
+  /*
+    Šios trys eilutės yra moderniausias būdas centruoti elementą vertikaliai.
+    Bendrai CSS tai yra didelė problema, su daug sudėtingų sprendimų, bet šis būdas veikia neblogai.
+    Jis pastumia elementą 50% žemyn per jį talpinančio elemento aukštį,
+    ir tuomet grąžina 50% aukštyn per pačio elemento aukštį.
+
+    Sudėtinga, nebūtina suprasti, veikia.
+  */
 }
 
 .carousel-indicators {
   bottom: 0;
+  /*
+    Mažas Bootstrap dizaino pataisymas.
+  */
 }
+
+
+/********** SEPTINTAS PAVYZDYS - JAVASCRIPT LAIKRODIS **********/
+
 
 .javascript-clock-demo {
   background: #e3e7e8;
@@ -472,14 +559,28 @@
   margin: -230px 0 0 -230px;
   top: 50%;
   left: 50%;
+  /*
+    Šios šešios eilutės aptartos anksčiau - bet jos yra vienas iš būdų centruoti
+    elementą horizontaliai ir vertikaliai, kai jo dydis yra žinomas.
+  */
   background: url(../images/clock/clock.png) no-repeat;
   -webkit-transform: translate3d(0, 0, 0);
 }
 
 .javascript-clock-demo .clock div {
+  /*
+    Trys rodyklės ir trys jų šešėliai visi yra <div> elementai - toks yra greitas būdas pasirinkti visus 6 iš karto.
+    Šios taisklės galioja visoms rodyklėms ir jų šešėliams.
+  */
   position: absolute;
   top: 70px;
   left: 70px;
+  /*
+    Apimantis elementas (.clock) turėjo postion: absolute, 
+    todėl position: absolute koordinatės jo viduje
+    (70px nuo viršaus ir 70px iš kairės) priklauso nuo jo.
+    Bendrai su position reikšmėmis reikia pažaisti, norint jas suprasti.
+  */
   width: 320px;
   height: 320px;
   background: no-repeat;
@@ -492,11 +593,17 @@
 .javascript-clock-demo #minutes        { background-image: url(../images/clock/minutes.png); }
 .javascript-clock-demo #seconds-shadow { background-image: url(../images/clock/secondsShadow.png); }
 .javascript-clock-demo #seconds        { background-image: url(../images/clock/seconds.png); }
+/*
+  Nustatomi visi fonai.
+*/
 
 .javascript-clock-demo #hours-shadow, 
 .javascript-clock-demo #minutes-shadow, 
 .javascript-clock-demo #seconds-shadow {
   top: 73px;
+  /*
+    Šešėliai yra 3px žemiau nei rodyklės.
+  */
 }
 
 .javascript-clock-demo #hours-shadow, 
@@ -511,13 +618,29 @@
 .javascript-clock-demo #seconds { 
   -webkit-transform: rotate(260deg); 
 }
+/*
+  Šis CSS nieko nedaro, nes jį pakeičia JavaScript kodas.
+  Bet jei JavaScript nebūtų, rodyklės būtų statinės, pasisukusios nurodytu kampu.
+  Būtent šitą CSS taisyklę ir keis JavaScript kodas.
+*/
+
+
+/********** AŠTUNTAS PAVYZDYS - JQUERY BURBULAI **********/
+
 
 .jquery-demo {
   background: linear-gradient(#d8b8e1, #f1eaf8);
+  /*
+    Su linear-gradient reiškme fonui labai lengva nustatyti gradientą (spalvų perėjimą).
+    MDN turi pilną dokumentaciją, kaip keisti kampus, pridėti daugiau spalvų ir t.t.
+  */
   position: relative;
   height: 500px;
   border-radius: 10px;
   overflow: hidden;
+  /*
+    Garantuoja kad burbulai neišlįs iš skirtų ribų.
+  */
   margin: 40px 0;
 
   -webkit-transform: translate3d(0, 0, 0);
@@ -527,18 +650,39 @@
   border-radius: 50%;
   position: absolute;
   cursor: pointer;
+  /*
+    Cursor leidžia pakeisti pelės kursorių.
+    Default yra paprasta pelytė (rodyklė).
+    Pointer yra ranka su ištiestu pirštu, ir nurodo interaktyvumą.
+    Yra ir daugiau reikšmių.
+  */
 
   -webkit-transform-origin: 50% 50%;
+  /*
+    Standartiškai objekto transformacijų taškas yra kairėje viršuje:
+    keičiant objekto dydį jis keičiasi ne iš centro, o iš kampo.
+    Ši taisyklė pajudina tą tašką į elemento centrą.
+  */
 
   transition: all 0.3s;
 }
 
 .jquery-demo .ball:hover {
   -webkit-transform: scale(1.3);
+  /*
+    Užvedus pele elementas šiek tiek padidėja.
+  */
 }
+
+
+/********** DEVINTAS PAVYZDYS - PORTFOLIO PUSLAPIS **********/
+
 
 .portfolio-example {
   background: url(../images/examples/portfolio/background.png);
+  /*
+    Pasikartojantis fonas.
+  */
   padding: 40px 0;
   margin: 40px 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -546,6 +690,9 @@
 
 .portfolio-example .header {
   font-family: 'Josefin Sans', sans-serif;
+  /*
+    Dar vienas šriftas iš Google Web Fonts.
+  */
   text-transform: uppercase;
   margin-bottom: 30px;
 }
@@ -557,6 +704,9 @@
 
 .portfolio-example .header .tagline {
   letter-spacing: 4px;
+  /*
+    Smarkiai padidintas tarpas tarp raidžių.
+  */
   opacity: 0.5;
   font-size: 20px;
 }
@@ -564,10 +714,17 @@
 .portfolio-example .sidebar ul {
   list-style: none;
   padding: 0;
+  /*
+    Šios taisyklės padaro sąrašą nepanašų į sąrašą - ko ir noriu:
+    nuima taškelius ir atitraukimą nuo krašto.
+  */
 }
 
 .portfolio-example .sidebar li {
   margin: 0 0 30px 0;
+  /*
+    Kiekvienas šoninio meniu punktas turi nemažą tarpą po savimi.
+  */
 }
 
 .portfolio-example .sidebar a {
@@ -577,11 +734,27 @@
   font-weight: bold;
   transition: all 0.3s;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  /*
+    Aprašo, kaip atrodo meniu puntai: baltas fonas, storesnis šriftas, tamsiai raudona spalva...
+  */
 }
 
 .portfolio-example .sidebar a:hover,
 .portfolio-example .sidebar a.current {
+  /*
+    Šie du selektoriai pasirenka meniu nuorodas dviem atvejais:
+    Kai pelė yra užvesta ant elemento (:hover)
+    ARBA
+    Kai nuoroda <a> turi class="current".
+
+    Tai labai dažna technika išskirti "atidarytą" meniu punktą.
+    Žinoma, šių dviejų selektorių stiliai galėtų ir skirtis.
+  */
   text-decoration: none;
+  /*
+    Standartiškai užvestos nuorodos turi pabraukimą apačioje.
+    Ši taisyklė nuima tą pabraukimą.
+  */
   color: #e8151f;
   border-left: 4px solid #e8151f;
 }
@@ -589,9 +762,27 @@
 .portfolio-example .content {
   background: #fff;
   padding: 40px;
+  /*
+    Visas .content turinys atitraukiamas nuo kraštų per 40px...
+    Hm, o kaip su antrašte, kurios fonas eina nuo krašto iki krašto?
+  */
 }
 
 .portfolio-example .content h4 {
+  margin: -40px -40px 40px -40px;
+  /*
+    Štai kaip su antrašte!
+    Ji turi neigiamą tarpą aplink save: t.y., atitraukimas eina į priešingą pusę.
+    Jei margin būtų didelis teigiamas skaičius, antraštė būtų atitraukta toliau nuo kraštų.
+    Neigiamas skaičius reiškia, kad ji bus atitraukta arčiau kraštų!
+
+    Tokie neigiami atitraukimai iš viršaus, dešinės ir kairės panaikinta tą padding: 40px;
+    tik šiam vienam elementui.
+  */
+
+  background: url(../images/examples/portfolio/header.jpg) no-repeat;
+  background-size: cover;
+
   font-family: 'Josefin Sans', sans-serif;
   text-transform: uppercase;
   text-align: center;
@@ -599,9 +790,9 @@
   color: #fff;
   letter-spacing: 5px;
   padding: 70px 0 58px 0;
-  margin: -40px -40px 40px -40px;
-  background: url(../images/examples/portfolio/header.jpg) no-repeat;
-  background-size: cover;
+  /*
+    Pačios antraštės vidaus tarpai: tekstas atitrauktas nuo viršaus kiek labiau nei nuo apačios.
+  */
 }
 
 .portfolio-example .gallery a {
@@ -613,19 +804,26 @@
 
 .portfolio-example .gallery a:hover {
   -webkit-transform: rotate(3deg) scale(1.05);
+  /*
+    Ši taisyklė padaro, kad užvestas paveiksliukas vos vos padidėja ir pasisuka. Subtilu, gražu.
+  */
   opacity: 0.8;
 }
 
 
 
 
-
+/********** DEMONSTRACIJŲ PABAIGA: TOLIAU EINA PAČIO PUSLAPIO DIZAINO CSS **********/
 
 
 
 
 body {
   font-family: "freight-text-pro", serif;
+  /*
+    Šis komercinis šriftas kraunamas iš Typekit.
+    (per <script> elementą HTML <head> dalyje).
+  */
   font-size: 16px;
   line-height: 1.6;
   padding: 260px 0 60px 0;
@@ -634,18 +832,27 @@ body {
 a {
   color: #a450dc;
 }
-
 a:hover {
   color: #682f8d;
 }
+/*
+  Nuorodų stilius paprastai ir užvedus pelę.
+*/
 
 code {
+  /*
+    Code elementas naudojamas mažiems kodo gabaliukams.
+    Didžioji dalis jo dizaino ateina iš Bootstrap, aš tik pakeičiu kelias spalvas.
+  */
   color: #5b456f;
   background-color: #f7f2fa;
   font-size: 0.8em;
 }
 
 small.caption {
+  /*
+    Elementas, kurį naudoju po Atom screenshotu.
+  */
   font-style: italic;
   color: #aaa;
 }
@@ -653,19 +860,21 @@ small.caption {
 img.spaced {
   margin: 30px 0;
 }
-
 .padded {
   margin-bottom: 60px;
 }
-
 ul.checklist {
   list-style: circle;
 }
-
 ul.checklist h5 {
   font-size: 1.2em;
 }
+/*
+  Keli atsitiktiniai elementai, šen bei ten.
+*/
 
+
+/********** PUSLAPIO HEADER - atsargiai, pavojingas (sudėtingas) CSS **********/
 
 
 #header {
@@ -673,9 +882,15 @@ ul.checklist h5 {
   top: 0;
   left: 0;
   width: 100%;
+  /*
+    Headeris yra pilno pločio ir "prikabintas" viršuje.
+  */
   background: white url(../images/header.jpg) center center no-repeat;
   background-size: cover;
   z-index: 10;
+  /*
+    Z-index rūpinasi elementų tvarka: kas ant ko viršaus. (Z ašis eina į vartotoją iš ekrano)
+  */
   height: 220px;
   overflow: hidden;
   transition: all 0.4s;
@@ -690,8 +905,16 @@ ul.checklist h5 {
 }
 
 #header header h1 {
-  font-weight: 900;
   font-family: "freight-display-pro", serif;
+  /*
+    Dar vienas šriftas iš Typekit.
+  */
+  font-weight: 900;
+  /*
+    Kai šriftas turi daugiau storių nei normal / bold, jie dažnai nurodomi šimtais.
+    100 yra extra-light / thin
+    900 yra black.
+  */
   font-size: 40px;
   margin: 60px 0 0 0;
   transition: all 0.4s;
@@ -728,10 +951,19 @@ ul.checklist h5 {
   transition: all 0.4s;
 }
 
+/*
+  Kai puslapis pascrollinamas, #header elementui JavaScript uždeda klasę "scrolled".
+  Tuomet pradeda galioti visi #header.scrolled stiliai. Taip ir sukuriamas perėjimas.
+*/
+
 #header.scrolled {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   height: 60px;
   background-position: center 60px;
+  /*
+    Headerio aukštis tampa 60px, o background paveiksliuko y pozicija - 60px.
+    Rezultatas: backgroundas nebematomas! Valio!
+  */
 }
 
 #header.scrolled header h1 {
@@ -762,6 +994,7 @@ ul.checklist h5 {
 }
 
 
+/********** PREZENTACIJŲ BLOKAS **********/
 
 
 .presentations article a {
@@ -789,13 +1022,19 @@ ul.checklist h5 {
 }
 
 
-
+/********** SEKCIJŲ (HTML, CSS...) ANTRAŠTĖS **********/
 
 
 .fancy-header {
   margin: 40px 0;
   padding: 80px 0;
   background: #d53a0a url(../images/fixedBackground.png) fixed;
+  /*
+    Kaip positions: fixed prikabina elementą fiksuotoje vietoje, ir jis nejuda scrollinant puslapį,
+    taip background: ... fixed; prikabina fono paveiksliuką.
+
+    Tai leidžia sukurti efektą, kur fono paveiksliukas nejuda kartu su elementu.
+  */
   box-shadow: inset 0 4px 24px rgba(0, 0, 0, 0.4);
   text-align: center;
   color: #fff;
@@ -806,6 +1045,10 @@ ul.checklist h5 {
 .fancy-header.bootstrap { background-color: #41177f; }
 .fancy-header.js { background-color: #fff252; color: rgba(0,0,0, 0.7); }
 .fancy-header.misc { background-color: #37a18a; }
+/*
+  Kiekviena antraštė turi savo fono spalvą, o JavaScript ir teksto spalvą.
+  Bet visais kitais aspektais jos vienodos.
+*/
 
 .fancy-header h2 {
   font-size: 56px;
@@ -823,9 +1066,12 @@ ul.checklist h5 {
 }
 
 
+/********** MISC **********/
 
-
-
+/*
+  Čia nereikia žiūrėti ir suprasti. 
+  Šitas CSS yra dalis Magnific Popup plugino...
+*/
 
 .mfp-with-zoom .mfp-container,
 .mfp-with-zoom.mfp-bg {
@@ -849,3 +1095,8 @@ ul.checklist h5 {
 .mfp-with-zoom.mfp-removing.mfp-bg {
   opacity: 0;
 }
+
+
+/*
+  Valio! Liko tik JavaScript!
+*/
